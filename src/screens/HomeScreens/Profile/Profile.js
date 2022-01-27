@@ -6,49 +6,18 @@ import {CommonActions} from '@react-navigation/routers';
 import {useUser} from '_store/hooks/useUser';
 import FormProfile from 'kvell-app-ui/src/components/molecules/FormProfile';
 import {styles} from './ProfileStyles';
-import {firebase} from '@react-native-firebase/auth';
-import {RouteNames, successMessages} from '_utils/constans/Constants';
-import {setBasicProfile} from '_data/APIInterface';
+import {successMessages} from '_utils/constans/Constants';
 
 export default function Profile({navigation}) {
-  const {user, actionsUser, userInfo} = useUser();
-  const [loadingSave, setLoadingSave] = useState(false);
+  const {actionsUser, userInfo} = useUser();
 
   const alert = useRef();
   // only for demo purposes
   const UriExample = 'https://www.w3schools.com/w3images/avatar6.png';
-
-  const username =
-    user.userName && user.userName !== '' ? user.userName : 'Stranger';
-
+  const username = 'Stranger';
   const [data, setData] = useState(userInfo);
 
-  const UpdateFields = async dataInfo => {
-    const phoneNumber = dataInfo.firebase_phone.replace(/[-() ]+/g, '').trim();
-    if (phoneNumber !== userInfo?.firebase_phone) {
-      firebase
-        .auth()
-        .verifyPhoneNumber(phoneNumber)
-        .then(confirmation => {
-          navigation.navigate(RouteNames.VERIFY_PHONE, {
-            phoneNumber,
-            verificationId: confirmation.verificationId,
-            dataInfo,
-          });
-        });
-    } else {
-      await setBasicProfile(user.userId, dataInfo);
-      alert.current.showAlert();
-      await actionsUser.validateIfUserAlreadyLoggedIn();
-    }
-  };
-
-  const onSave = async dataValues => {
-    setData(dataValues);
-    setLoadingSave(true);
-    await UpdateFields(dataValues);
-    setLoadingSave(false);
-  };
+  const onSave = async () => {};
   const goBack = () => {
     navigation.dispatch(CommonActions.goBack());
   };
@@ -77,7 +46,6 @@ export default function Profile({navigation}) {
         />
         <KeyboardAvoidingView behavior={'position'}>
           <FormProfile
-            loading={loadingSave}
             styleContain={styles.formContain}
             userData={data}
             onSaveData={onSave}

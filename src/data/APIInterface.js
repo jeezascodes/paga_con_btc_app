@@ -35,26 +35,6 @@ export const getUserByFirebaseID = id => {
   });
 };
 
-export const getUserProgressByDate = (id, date) => {
-  return fetch(urls.getUserProgressByDate(id, date), {
-    method: 'GET',
-  });
-};
-
-export const getUserProgressByRangeDate = data => {
-  const {begin_date, end_date, id} = data;
-  return fetch(urls.getUserProgressByRange(id, begin_date, end_date), {
-    method: 'GET',
-  });
-};
-
-export const setBasicProfile = (id, data) => {
-  return fetch(urls.setBasicProfile(id), {
-    method: 'PUT',
-    body: data,
-  });
-};
-
 export const createNewFeedback = data => {
   return fetch(urls.newFeedback, {
     method: 'POST',
