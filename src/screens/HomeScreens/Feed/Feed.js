@@ -8,12 +8,9 @@ import {useTheme} from '_utils/styles/themeProvider';
 import {TextTypes, RouteNames} from '_utils/constans/Constants';
 
 export default function Feed({navigation}) {
-  const {user, userStories} = useUser();
   const theme = useTheme().theme;
-  const entriesDiary = userStories.length;
 
-  const username =
-    user.userName && user.userName !== '' ? user.userName : 'Stranger';
+  const username = 'Stranger';
 
   // only for demo purposes
   const UriExample = 'https://www.w3schools.com/w3images/avatar6.png';
@@ -47,11 +44,8 @@ export default function Feed({navigation}) {
               Hero’s Diary
             </Text>
             <Text>
-              {entriesDiary > 0
-                ? `You have ${entriesDiary} ${
-                    entriesDiary > 1 ? 'entries' : 'entry'
-                  } for today. Do you want to add some?`
-                : 'You have no diary entry for today. Writing is a great way to document your journey, let’s put some thoughts on paper!'}
+              'You have no diary entry for today. Writing is a great way to
+              document your journey, let’s put some thoughts on paper!'
             </Text>
             <Button
               customStyles={feedStyles().verticalSeparation}

@@ -1,6 +1,5 @@
 import React from 'react';
 import {Feed, Profile} from '_screens/HomeScreens';
-import {VerifyPhone} from '_screens/AuthScreens';
 import {createStackNavigator} from '@react-navigation/stack';
 import {RouteNames} from '_utils/constans/Constants';
 import OfflineScreen from '_screens/OfflineScreen';
@@ -17,7 +16,6 @@ export default function HomeStack() {
         component={Profile}
         options={{gestureEnabled: false}}
       />
-      <Stack.Screen name={RouteNames.VERIFY_PHONE} component={VerifyPhone} />
       <Stack.Screen name={RouteNames.OFFLINE} component={OfflineScreen} />
     </Stack.Navigator>
   );

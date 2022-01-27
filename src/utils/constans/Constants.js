@@ -43,7 +43,6 @@ export const RouteNames = {
   // AuthStack
   LOGIN: 'Login',
   LOADING: 'Loading',
-  DAILY_QUOTE: 'DailyQuote',
   REGISTER_PHONE: 'RegisterPhone',
   VERIFY_PHONE: 'VerifyPhone',
   // HomeStack

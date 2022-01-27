@@ -7,8 +7,6 @@ import {
   firebaseMessagingSenderId,
   firebaseAppId,
   webClientId,
-  apikeyRaygun,
-  apikeyRaygunDev,
   apiUrl,
   apiProd,
 } from '@env';
@@ -26,11 +24,6 @@ export const isProduction = url => {
   return url === apiProd ? true : false;
 };
 
-export const raygunConfig = {
-  apiKey: isProduction(apiUrl) ? apikeyRaygun : apikeyRaygunDev,
-  enableCrashReporting: true,
-  enableRealUserMonitoring: true,
-};
 export const googleConfig = {
   // Replace with your firebaseWebClientId
   // Generated from Firebase console

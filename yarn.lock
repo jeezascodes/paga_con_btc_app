@@ -2572,7 +2572,7 @@
     "prop-types" "^15.6.1"
     "react-lifecycles-compat" "^3.0.4"
 
-"@react-native-async-storage/async-storage@^1.13.4", "@react-native-async-storage/async-storage@^1.15.4":
+"@react-native-async-storage/async-storage@^1.15.4":
   "integrity" "sha512-pC0MS6UBuv/YiVAxtzi7CgUed8oCQNYMtGt0yb/I9fI/BWTiJK5cj4YtW2XtL95K5IuvPX/6uGWaouZ8KqXwdg=="
   "resolved" "https://registry.npmjs.org/@react-native-async-storage/async-storage/-/async-storage-1.15.4.tgz"
   "version" "1.15.4"
@@ -14709,13 +14709,6 @@
   dependencies:
     "loader-utils" "^2.0.0"
     "schema-utils" "^3.0.0"
-
-"raygun4reactnative@^1.1.5":
-  "integrity" "sha512-/emTusHlte1rJDO3Vx+Bkun/ENYCN+hB2snFcbfKDlHITujZYPdrEtIMyPcHsp/tkHBP9dtxAfC2laxwmlnU3g=="
-  "resolved" "https://registry.npmjs.org/raygun4reactnative/-/raygun4reactnative-1.1.5.tgz"
-  "version" "1.1.5"
-  dependencies:
-    "@react-native-async-storage/async-storage" "^1.13.4"
 
 "react-async-hook@3.6.1":
   "integrity" "sha512-YWBB2feVQF79t5u2raMPHlZ8975Jds+guCvkWVC4kRLDlSCouLsYpQm4DGSqPeHvoHYVVcDfqNayLZAXQmnxnw=="
