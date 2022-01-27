@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>436446829406-qtrlik8tfuc9i1ucb1109hmv3p7occb2.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.436446829406-qtrlik8tfuc9i1ucb1109hmv3p7occb2</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>436446829406-f8bb0ijdt2r1nlsv0q6cp369g3hbu33c.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDFpNpjBg4yYkkpGZslMbNfklqD8OyJcFs</string>
+	<key>GCM_SENDER_ID</key>
+	<string>436446829406</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>MainKvellApp</string>
+	<key>PROJECT_ID</key>
+	<string>ardent-course-298421</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ardent-course-298421.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:436446829406:ios:b5654c2d23acebd43e8dcf</string>
+</dict>
+</plist>
