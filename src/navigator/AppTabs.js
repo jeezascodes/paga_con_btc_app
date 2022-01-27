@@ -1,11 +1,10 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {HomeStack, ResourcesStack, ChatStack} from './stacks';
-import {Icon, Bubble} from 'kvell-app-ui';
+import {HomeStack} from './stacks';
+import {Icon} from 'kvell-app-ui';
 import {Colors} from '_utils/styles';
 import {useTheme} from '_utils/styles/themeProvider';
 import {IconNames, RouteNames} from '_utils/constans/Constants';
-import {useWizard} from '_store/hooks/useWizard';
 import {getHeight} from '_utils/helpers/interfaceDimensions';
 
 const Tabs = createBottomTabNavigator();

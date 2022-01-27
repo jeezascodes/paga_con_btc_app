@@ -40,11 +40,6 @@ export const IconNames = {
 export const RouteNames = {
   HOME: 'Home',
   OFFLINE: 'OfflineScreen',
-  // AuthStack
-  LOGIN: 'Login',
-  LOADING: 'Loading',
-  REGISTER_PHONE: 'RegisterPhone',
-  VERIFY_PHONE: 'VerifyPhone',
   // HomeStack
   FEED: 'Feed',
   PROFILE: 'Profile',
