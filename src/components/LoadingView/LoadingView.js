@@ -4,8 +4,13 @@ import AppTabs from '_navigator/AppTabs';
 import RNBootSplash from 'react-native-bootsplash';
 import {Welcome} from '../../screens/HomeScreens/Welcome/Welcome';
 import AuthStack from '_navigator/stacks/AuthStack';
+import {useUser} from '_store/hooks/useUser';
 
 const LoadingView = () => {
+  const {isUserLoggedIn} = useUser();
+
+  console.log(`isUserLoggedIn`, isUserLoggedIn);
+
   useEffect(() => {
     RNBootSplash.hide({fade: true});
     return () => {};
@@ -13,7 +18,7 @@ const LoadingView = () => {
 
   let content = (
     <NavigationContainer>
-      <AuthStack />
+      {isUserLoggedIn ? <AppTabs /> : <AuthStack />}
     </NavigationContainer>
   );
 

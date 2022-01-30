@@ -33,7 +33,7 @@
     "kvell-app-ui": "^1.6.2",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
-    "paga-con-btc-ui": "^0.0.1",
+    "paga-con-btc-ui": "^0.0.2",
     "raygun4reactnative": "^1.1.5",
     "react": "16.13.1",
     "react-native": "0.63.4",

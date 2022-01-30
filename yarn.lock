@@ -13839,10 +13839,10 @@
   "resolved" "https://registry.npmjs.org/p-try/-/p-try-2.2.0.tgz"
   "version" "2.2.0"
 
-"paga-con-btc-ui@^0.0.1":
-  "integrity" "sha512-wLFxFD9wlKoUrpEnO6mcA5eXxHXgG3WYdNzZK/kbjz7pH6Jb/Ej3Xb3+HMMa7hVxu4oTmONomvP/pe9gJ2xcqA=="
-  "resolved" "https://registry.npmjs.org/paga-con-btc-ui/-/paga-con-btc-ui-0.0.1.tgz"
-  "version" "0.0.1"
+"paga-con-btc-ui@^0.0.2":
+  "integrity" "sha512-QlL4kM1jsW9huoc0YLOum3ENf112JG1UYihxfXP7shUjuzfCHe++kmy1t64CUKfgyYvC45jVObzxwrn6ps8yBQ=="
+  "resolved" "https://registry.npmjs.org/paga-con-btc-ui/-/paga-con-btc-ui-0.0.2.tgz"
+  "version" "0.0.2"
   dependencies:
     "@babel/preset-env" "^7.11.5"
     "@babel/preset-react" "^7.10.4"

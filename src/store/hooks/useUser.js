@@ -1,7 +1,6 @@
 import {} from '_data/APIInterface';
-import {} from '_store/actions/userActions';
 import {useDispatch, useSelector} from 'react-redux';
-import {useCallback} from 'react';
+import {setUser} from '_store/actions/userActions';
 
 import {} from '_utils/constans/Constants';
 
@@ -11,7 +10,11 @@ export const useUser = () => {
   const userStories = useSelector(state => state.user.userStories);
   const userInfo = useSelector(state => state.user.userInfo);
 
-  const actionsUser = {};
+  const logIn = async () => {
+    dispatch(setUser(1));
+  };
+
+  const actionsUser = {logIn};
   return {
     userInfo,
     userStories,

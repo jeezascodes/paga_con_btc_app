@@ -9,12 +9,7 @@ export default function HomeStack() {
   return (
     <Stack.Navigator
       screenOptions={{header: () => null}}
-      initialRouteName={RouteNames.WELCOME}>
-      <Stack.Screen
-        name={RouteNames.WELCOME}
-        component={Welcome}
-        options={{tabBarVisible: false}}
-      />
+      initialRouteName={RouteNames.FEED}>
       <Stack.Screen name={RouteNames.FEED} component={Feed} />
       <Stack.Screen name={RouteNames.PROFILE} component={Profile} />
       <Stack.Screen name={RouteNames.OFFLINE} component={OfflineScreen} />
