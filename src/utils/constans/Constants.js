@@ -42,6 +42,7 @@ export const RouteNames = {
   OFFLINE: 'OfflineScreen',
   // HomeStack
   FEED: 'Feed',
+  WELCOME: 'Welcome',
   PROFILE: 'Profile',
 };
 
