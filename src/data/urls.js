@@ -1,9 +1,8 @@
 import {apiUrl} from '@env';
 
-// API V3
-export const BASE_API_V3 = apiUrl;
-
-export const GOOGLE_PEOPLE_API = 'https://people.googleapis.com/v1/people/me';
+// API V1
+export const BASE_API = 'https://pagaconbtc.com/api/v1/';
 
 // New API urls
-export const userLogin = `${BASE_API_V3}/api/account/login`;
+export const categories = `${BASE_API}service/categories/`;
+export const services = `${BASE_API}service/services/`;

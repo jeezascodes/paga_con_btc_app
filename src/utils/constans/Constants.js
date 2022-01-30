@@ -44,6 +44,7 @@ export const RouteNames = {
   FEED: 'Feed',
   WELCOME: 'Welcome',
   PROFILE: 'Profile',
+  SERVICE_DETAIL: 'ServiceDetail',
 };
 
 export const TextTypes = {

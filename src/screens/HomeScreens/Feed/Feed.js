@@ -1,25 +1,28 @@
-import React, {useEffect} from 'react';
-import {useUser} from '_store/hooks/useUser';
+import React, {useState, useEffect} from 'react';
 import MainView from '_components/MainView/MainView';
-import {Button, Text, Card, Welcome} from 'paga-con-btc-ui';
-import {View, ScrollView} from 'react-native';
-import {feedStyles} from './FeedStyles';
+import {Card, MainHeader} from 'paga-con-btc-ui';
+import {View, ScrollView, Image, TouchableOpacity} from 'react-native';
+import {feedStyles, thumbnails, cardContainer, cardWrapper} from './FeedStyles';
 import {useTheme} from '_utils/styles/themeProvider';
-import {TextTypes, RouteNames} from '_utils/constans/Constants';
+import {RouteNames} from '_utils/constans/Constants';
+import {getServicesList} from '../../../data/APIInterface';
 
 export default function Feed({navigation}) {
   const theme = useTheme().theme;
+  const [services, setServices] = useState([]);
 
-  const username = 'Stranger';
+  const getServices = async () => {
+    const response = await getServicesList();
+    setServices(response.payload.results);
+  };
 
-  // only for demo purposes
-  const UriExample = 'https://www.w3schools.com/w3images/avatar6.png';
-  useEffect(() => {}, []);
-  const goToHistory = () => {};
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getServices();
+  }, []);
 
   return (
     <MainView testID="screen_feed">
+      {/* <MainHeader title={'Inicio'} /> */}
       <ScrollView
         keyboardShouldPersistTaps={true}
         style={feedStyles(theme).scrollView}>
@@ -27,21 +30,21 @@ export default function Feed({navigation}) {
           style={[
             feedStyles(theme).HorizontalViewStyles,
             feedStyles(theme).verticalSeparation,
+            cardContainer,
           ]}>
-          <Card>
-            <Text type={TextTypes.TITLE} style={feedStyles(theme).titleStyles}>
-              Hero’s Diary
-            </Text>
-            <Text>
-              'You have no diary entry for today. Writing is a great way to
-              document your journey, let’s put some thoughts on paper!'
-            </Text>
-            <Button
-              customStyles={feedStyles().verticalSeparation}
-              title="Create New Entry"
-              onPress={() => goToHistory()}
-            />
-          </Card>
+          {services?.map(item => {
+            return (
+              <TouchableOpacity
+                onPress={() =>
+                  navigation.navigate(RouteNames.SERVICE_DETAIL, {item})
+                }
+                style={cardWrapper}>
+                <Card>
+                  <Image style={thumbnails} source={{uri: item.thumbnail}} />
+                </Card>
+              </TouchableOpacity>
+            );
+          })}
         </View>
       </ScrollView>
     </MainView>

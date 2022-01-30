@@ -15,7 +15,6 @@ export const feedStyles = (theme, isListDone) => {
   return {
     topMargin: {marginTop: getHeight(30)},
     verticalSeparation: {marginVertical: getHeight(28)},
-    scrollView: {marginBottom: getHeight(100)},
     titleStyles: {marginBottom: getHeight(15)},
     HorizontalViewStyles: {
       marginHorizontal: getWidth(19),
@@ -30,4 +29,21 @@ export const feedStyles = (theme, isListDone) => {
       paddingHorizontal: getWidth(20),
     },
   };
+};
+
+export const thumbnails = {
+  width: '100%',
+  height: getHeight(100),
+  resizeMode: 'contain',
+};
+
+export const cardContainer = {
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
+};
+
+export const cardWrapper = {
+  width: '47%',
+  paddingVertical: getWidth(10),
 };
