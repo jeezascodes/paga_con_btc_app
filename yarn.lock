@@ -2572,7 +2572,7 @@
     "prop-types" "^15.6.1"
     "react-lifecycles-compat" "^3.0.4"
 
-"@react-native-async-storage/async-storage@^1.15.4":
+"@react-native-async-storage/async-storage@^1.13.4", "@react-native-async-storage/async-storage@^1.15.4":
   "integrity" "sha512-pC0MS6UBuv/YiVAxtzi7CgUed8oCQNYMtGt0yb/I9fI/BWTiJK5cj4YtW2XtL95K5IuvPX/6uGWaouZ8KqXwdg=="
   "resolved" "https://registry.npmjs.org/@react-native-async-storage/async-storage/-/async-storage-1.15.4.tgz"
   "version" "1.15.4"
@@ -3799,7 +3799,7 @@
     "emotion-theming" "^10.0.19"
     "react-native-swipe-gestures" "^1.0.4"
 
-"@storybook/react@^6.0.22":
+"@storybook/react@^6.0.22", "@storybook/react@6.4.13":
   "integrity" "sha512-bmHGeAAad0qoEfselx3qvWlPf1fWccDgki3TneFWYTSoybZOuu0PWJp+M7kqWMxcyvdwQImjA9F+vCc7CUuF9w=="
   "resolved" "https://registry.npmjs.org/@storybook/react/-/react-6.4.13.tgz"
   "version" "6.4.13"
@@ -7322,7 +7322,12 @@
   "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.20.3.tgz"
   "version" "3.20.3"
 
-"core-js@^3.6.5", "core-js@^3.8.2":
+"core-js@^3.6.5":
+  "integrity" "sha512-vVl8j8ph6tRS3B8qir40H7yw7voy17xL0piAjlbBUsH7WIfzoedL/ZOr1OV9FyZQLWXsayOJyV4tnRyXR85/ag=="
+  "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.20.3.tgz"
+  "version" "3.20.3"
+
+"core-js@^3.8.2":
   "integrity" "sha512-vVl8j8ph6tRS3B8qir40H7yw7voy17xL0piAjlbBUsH7WIfzoedL/ZOr1OV9FyZQLWXsayOJyV4tnRyXR85/ag=="
   "resolved" "https://registry.npmjs.org/core-js/-/core-js-3.20.3.tgz"
   "version" "3.20.3"
@@ -8280,6 +8285,11 @@
     "inherits" "^2.0.4"
     "minimalistic-assert" "^1.0.1"
     "minimalistic-crypto-utils" "^1.0.1"
+
+"eme-encryption-scheme-polyfill@^2.0.1":
+  "integrity" "sha512-44CNFMsqzHdKHrzWxlS7xZ8KUHn5XutBqpmCuWzNIynmAyFInHrrD3ozv/RvK9ZhgV6QY6Easx8EWAmxteNodg=="
+  "resolved" "https://registry.npmjs.org/eme-encryption-scheme-polyfill/-/eme-encryption-scheme-polyfill-2.0.3.tgz"
+  "version" "2.0.3"
 
 "emittery@^0.7.1":
   "integrity" "sha512-A8OG5SR/ij3SsJdWDJdkkSYUjQdCUx6APQXem0SaEePBSRg4eymGYwBkKo1Y6DU+af/Jn2dBQqDBvjnr9Vi8nQ=="
@@ -11929,6 +11939,11 @@
   "resolved" "https://registry.npmjs.org/jwt-decode/-/jwt-decode-3.1.2.tgz"
   "version" "3.1.2"
 
+"keymirror@^0.1.1":
+  "integrity" "sha1-kYiJ6hP40KQufFVyUO7nE63JXDU="
+  "resolved" "https://registry.npmjs.org/keymirror/-/keymirror-0.1.1.tgz"
+  "version" "0.1.1"
+
 "kind-of@^1.1.0":
   "integrity" "sha1-FAo9LUGjbS78+pN3tiwk+ElaXEQ="
   "resolved" "https://registry.npmjs.org/kind-of/-/kind-of-1.1.0.tgz"
@@ -13824,6 +13839,65 @@
   "resolved" "https://registry.npmjs.org/p-try/-/p-try-2.2.0.tgz"
   "version" "2.2.0"
 
+"paga-con-btc-ui@^0.0.1":
+  "integrity" "sha512-wLFxFD9wlKoUrpEnO6mcA5eXxHXgG3WYdNzZK/kbjz7pH6Jb/Ej3Xb3+HMMa7hVxu4oTmONomvP/pe9gJ2xcqA=="
+  "resolved" "https://registry.npmjs.org/paga-con-btc-ui/-/paga-con-btc-ui-0.0.1.tgz"
+  "version" "0.0.1"
+  dependencies:
+    "@babel/preset-env" "^7.11.5"
+    "@babel/preset-react" "^7.10.4"
+    "@react-native-community/image-editor" "^2.3.0"
+    "@react-native-picker/picker" "^1.16.3"
+    "@storybook/addon-actions" "^6.0.22"
+    "@storybook/addon-essentials" "^6.0.22"
+    "@storybook/addon-knobs" "^6.0.22"
+    "@storybook/addon-links" "^6.0.22"
+    "@storybook/react" "^6.0.22"
+    "@storybook/react-native" "^5.3.23"
+    "@storybook/react-native-server" "^5.3.23"
+    "accordion-collapse-react-native" "^1.0.0"
+    "clean-webpack-plugin" "^3.0.0"
+    "moment" "^2.29.1"
+    "node-sass" "^4.14.1"
+    "path" "^0.12.7"
+    "prop-types" "^15.7.2"
+    "react" "16.13.1"
+    "react-is" "^16.13.1"
+    "react-native" "0.63.4"
+    "react-native-confirmation-code-field" "^7.0.1"
+    "react-native-country-picker-modal" "^2.0.0"
+    "react-native-elements" "^3.3.2"
+    "react-native-fast-image" "^8.3.5"
+    "react-native-fs" "^2.18.0"
+    "react-native-gesture-handler" "^1.8.0"
+    "react-native-image-modal" "^2.0.3"
+    "react-native-linear-gradient" "^2.5.6"
+    "react-native-masked-text" "^1.13.0"
+    "react-native-picker-select" "^8.0.4"
+    "react-native-progress-circle" "^2.1.0"
+    "react-native-ratings" "^8.1.0"
+    "react-native-reanimated" "^2.1.0"
+    "react-native-safe-area-context" "^3.2.0"
+    "react-native-share" "^7.2.0"
+    "react-native-sound-player" "^0.11.1"
+    "react-native-spinkit" "^1.5.1"
+    "react-native-storybook-loader" "^2.0.2"
+    "react-native-svg" "^12.1.0"
+    "react-native-svg-charts" "^5.4.0"
+    "react-native-svg-icon" "^0.8.1"
+    "react-native-tab-view" "^2.15.1"
+    "react-native-vector-icons" "^8.1.0"
+    "react-native-video" "^5.2.0"
+    "react-native-view-shot" "^3.1.2"
+    "react-native-webview" "^11.14.3"
+    "react-native-youtube" "^2.0.2"
+    "reanimated-bottom-sheet" "^1.0.0-alpha.22"
+    "sass-loader" "^10.0.2"
+    "webpack" "^4.44.2"
+    "webpack-cli" "^3.3.12"
+    "webpack-node-externals" "^2.5.2"
+    "xdate" "^0.8.2"
+
 "pako@^1.0.5", "pako@~1.0.5":
   "integrity" "sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw=="
   "resolved" "https://registry.npmjs.org/pako/-/pako-1.0.11.tgz"
@@ -14710,6 +14784,13 @@
     "loader-utils" "^2.0.0"
     "schema-utils" "^3.0.0"
 
+"raygun4reactnative@^1.1.5":
+  "integrity" "sha512-/emTusHlte1rJDO3Vx+Bkun/ENYCN+hB2snFcbfKDlHITujZYPdrEtIMyPcHsp/tkHBP9dtxAfC2laxwmlnU3g=="
+  "resolved" "https://registry.npmjs.org/raygun4reactnative/-/raygun4reactnative-1.1.5.tgz"
+  "version" "1.1.5"
+  dependencies:
+    "@react-native-async-storage/async-storage" "^1.13.4"
+
 "react-async-hook@3.6.1":
   "integrity" "sha512-YWBB2feVQF79t5u2raMPHlZ8975Jds+guCvkWVC4kRLDlSCouLsYpQm4DGSqPeHvoHYVVcDfqNayLZAXQmnxnw=="
   "resolved" "https://registry.npmjs.org/react-async-hook/-/react-async-hook-3.6.1.tgz"
@@ -15163,6 +15244,15 @@
     "lodash.template" "^4.5.0"
     "prop-types" "^15.7.2"
     "yargs" "^16.1.1"
+
+"react-native-video@^5.2.0":
+  "integrity" "sha512-5SK1lxyzrCkZF+WuxUxLR1Pt65E0rsWB1w1GrGxSLdC9zWYBumcmuHl+wPJ7UQvznjaH2Ze7uU1R3arejI7+WQ=="
+  "resolved" "https://registry.npmjs.org/react-native-video/-/react-native-video-5.2.0.tgz"
+  "version" "5.2.0"
+  dependencies:
+    "keymirror" "^0.1.1"
+    "prop-types" "^15.7.2"
+    "shaka-player" "^2.5.9"
 
 "react-native-view-shot@^3.1.2":
   "integrity" "sha512-9u9fPtp6a52UMoZ/UCPrCjKZk8tnkI9To0Eh6yYnLKFEGkRZ7Chm6DqwDJbYJHeZrheCCopaD5oEOnRqhF4L2Q=="
@@ -16324,6 +16414,13 @@
   dependencies:
     "inherits" "^2.0.1"
     "safe-buffer" "^5.0.1"
+
+"shaka-player@^2.5.9":
+  "integrity" "sha512-3MC9k0OXJGw8AZ4n/ZNCZS2yDxx+3as5KgH6Tx4Q5TRboTBBCu6dYPI5vp1DxKeyU12MBN1Zcbs7AKzXv2EnCg=="
+  "resolved" "https://registry.npmjs.org/shaka-player/-/shaka-player-2.5.23.tgz"
+  "version" "2.5.23"
+  dependencies:
+    "eme-encryption-scheme-polyfill" "^2.0.1"
 
 "shallow-clone@^1.0.0":
   "integrity" "sha512-oeXreoKR/SyNJtRJMAKPDSvd28OqEwG4eR/xc856cRGBII7gX9lvAqDxusPm0846z/w/hWYjI1NpKwJ00NHzRA=="

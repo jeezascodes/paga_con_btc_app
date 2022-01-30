@@ -19,6 +19,8 @@ target 'MainKvellApp' do
   # add pods for any other desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
 
+  pod 'react-native-video', :path => '../node_modules/react-native-video'
+
   target 'MainKvellAppTests' do
     inherit! :complete
     # Pods for testing

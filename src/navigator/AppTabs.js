@@ -1,17 +1,17 @@
 import React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {HomeStack} from './stacks';
-import {Icon} from 'kvell-app-ui';
-import {Colors} from '_utils/styles';
+import {Icon} from 'paga-con-btc-ui';
+import {Colors, AppColors} from '_utils/styles';
 import {useTheme} from '_utils/styles/themeProvider';
 import {IconNames, RouteNames} from '_utils/constans/Constants';
-import {getHeight} from '_utils/helpers/interfaceDimensions';
+import {getHeight, getWidth} from '_utils/helpers/interfaceDimensions';
 
 const Tabs = createBottomTabNavigator();
 
 export default function AppTabs() {
   let theme = useTheme().theme;
-  let brandColor = Colors(theme).brandColor;
+  let brandColor = AppColors(theme).brandColor;
 
   return (
     <Tabs.Navigator
@@ -39,20 +39,21 @@ export default function AppTabs() {
         tabBarTestID: 'tab_' + route.name,
       })}
       tabBarOptions={{
-        activeTintColor: brandColor,
+        activeTintColor: AppColors(theme).black,
         inactiveTintColor: brandColor,
         showLabel: false,
         style: {
-          height: getHeight(80),
-          backgroundColor: Colors(theme).background,
-          shadowColor: Colors(theme).shadowColor,
-          shadowOffset: {
-            width: 0,
-            height: 1,
-          },
+          backgroundColor: AppColors(theme).white,
           shadowOpacity: 0.22,
           shadowRadius: 2.22,
-          elevation: 3,
+          elevation: 0,
+          shadowColor: '#5bc4ff',
+          shadowOpacity: 0,
+          shadowOffset: {
+            height: 0,
+          },
+          shadowRadius: 0,
+          borderTopWidth: 0,
         },
       }}>
       <Tabs.Screen name={IconNames.HOME} component={HomeStack} />

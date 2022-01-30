@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {View, Image} from 'react-native';
 import {styles} from './OfflineScreenStyles';
-import {Text, MainHeader} from 'kvell-app-ui';
+import {Text, MainHeader} from 'paga-con-btc-ui';
 import MainView from '_components/MainView/MainView';
 import {flexContent} from '_utils/styles/globalStyles';
 import {TextTypes} from '_utils/constans/Constants';

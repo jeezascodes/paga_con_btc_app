@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useUser} from '_store/hooks/useUser';
 import MainView from '_components/MainView/MainView';
-import {Button, Text, Card, Welcome} from 'kvell-app-ui';
+import {Button, Text, Card, Welcome} from 'paga-con-btc-ui';
 import {View, ScrollView} from 'react-native';
 import {feedStyles} from './FeedStyles';
 import {useTheme} from '_utils/styles/themeProvider';
@@ -19,18 +19,7 @@ export default function Feed({navigation}) {
   useEffect(() => {}, []);
 
   return (
-    <MainView testID="screen_feed" gradientWithColor={true}>
-      <Welcome
-        scroll={true}
-        styleContain={[feedStyles(theme).topMargin]}
-        userName={`Hi ${username}`}
-        source={{uri: UriExample}}
-        welcomeText="Good morning!"
-        onPressImage={() => {
-          navigation.navigate(RouteNames.PROFILE);
-        }}
-        touchableImage={true}
-      />
+    <MainView testID="screen_feed">
       <ScrollView
         keyboardShouldPersistTaps={true}
         style={feedStyles(theme).scrollView}>

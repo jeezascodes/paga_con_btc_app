@@ -1,4 +1,4 @@
-import {Colors} from '../../utils/styles';
+import {Colors, AppColors} from '../../utils/styles';
 import {
   getHeight,
   getWidth,
@@ -8,7 +8,7 @@ import {
 
 export function mainViewStyles(theme, gradient, horizontalMargin) {
   return {
-    backgroundColor: Colors(theme).background,
+    backgroundColor: AppColors(theme).black,
     flex: 1,
     containerPadding: {
       marginHorizontal: getWidth(20),
@@ -18,7 +18,7 @@ export function mainViewStyles(theme, gradient, horizontalMargin) {
 }
 export function mainViewWithColor(theme) {
   return {
-    backgroundColor: Colors(theme).background,
+    backgroundColor: AppColors(theme).background,
     flex: 1,
   };
 }

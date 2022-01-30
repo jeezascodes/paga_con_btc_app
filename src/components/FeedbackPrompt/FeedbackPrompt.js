@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Button, Card, Text, Bubble} from 'kvell-app-ui';
+import {Button, Card, Text, Bubble} from 'paga-con-btc-ui';
 
 import {getHeight, getWidth} from '_utils/helpers/interfaceDimensions';
 import {useFeedback} from '_store/hooks/useFeedback';

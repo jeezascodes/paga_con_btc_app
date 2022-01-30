@@ -1,6 +1,6 @@
 import React from 'react';
 import {View} from 'react-native';
-import {Text} from 'kvell-app-ui';
+import {Text} from 'paga-con-btc-ui';
 import {TextTypes} from '_utils/constans/Constants';
 import {TermsAndConditionsStyles} from './TermsAndConditionsStyles';
 

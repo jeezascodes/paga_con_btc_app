@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import {ScrollView} from 'react-native';
 import MainView from '_components/MainView/MainView';
-import {MainHeader, ProfilePicture, Alert} from 'kvell-app-ui';
+import {MainHeader, ProfilePicture, Alert} from 'paga-con-btc-ui';
 import {CommonActions} from '@react-navigation/routers';
 import {useUser} from '_store/hooks/useUser';
 import {styles} from './ProfileStyles';
