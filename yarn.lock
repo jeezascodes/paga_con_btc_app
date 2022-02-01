@@ -8035,6 +8035,11 @@
     "miller-rabin" "^4.0.0"
     "randombytes" "^2.0.0"
 
+"dijkstrajs@^1.0.1":
+  "integrity" "sha512-QV6PMaHTCNmKSeP6QoXhVTw9snc9VD8MulTT0Bd99Pacp4SS1cjcrYPgBPmibqKVtMJJfqC6XvOXgPMEEPH/fg=="
+  "resolved" "https://registry.npmjs.org/dijkstrajs/-/dijkstrajs-1.0.2.tgz"
+  "version" "1.0.2"
+
 "dir-glob@^2.2.2":
   "integrity" "sha512-f9LBi5QWzIW3I6e//uxZoLBlUt9kcp66qo0sSCxL6YZKc75R1c4MFCoe/LaZiBGmgujvQdxc5Bn3QhfyvK5Hsw=="
   "resolved" "https://registry.npmjs.org/dir-glob/-/dir-glob-2.2.2.tgz"
@@ -8324,6 +8329,11 @@
     "@babel/runtime" "^7.5.5"
     "@emotion/weak-memoize" "0.2.5"
     "hoist-non-react-statics" "^3.3.0"
+
+"encode-utf8@^1.0.3":
+  "integrity" "sha512-ucAnuBEhUK4boH2HjVYG5Q2mQyPorvv0u/ocS+zhdw0S8AlHYY+GOFhP1Gio5z4icpP2ivFSvhtFjQi8+T9ppw=="
+  "resolved" "https://registry.npmjs.org/encode-utf8/-/encode-utf8-1.0.3.tgz"
+  "version" "1.0.3"
 
 "encodeurl@~1.0.2":
   "integrity" "sha1-rT/0yG7C0CkyL1oCw6mmBslbP1k="
@@ -14281,6 +14291,11 @@
   "resolved" "https://registry.npmjs.org/pngjs/-/pngjs-3.4.0.tgz"
   "version" "3.4.0"
 
+"pngjs@^5.0.0":
+  "integrity" "sha512-40QW5YalBNfQo5yRYmiw7Yz6TKKVr3h6970B2YE+3fQpsWcrbj1PzJgxeJ19DRQjhMbKPIuMY8rFaXc8moolVw=="
+  "resolved" "https://registry.npmjs.org/pngjs/-/pngjs-5.0.0.tgz"
+  "version" "5.0.0"
+
 "pnp-webpack-plugin@1.5.0":
   "integrity" "sha512-jd9olUr9D7do+RN8Wspzhpxhgp1n6Vd0NtQ4SFkmIACZoEL1nkyAdW9Ygrinjec0vgDcWjscFQQ1gDW8rsfKTg=="
   "resolved" "https://registry.npmjs.org/pnp-webpack-plugin/-/pnp-webpack-plugin-1.5.0.tgz"
@@ -14678,6 +14693,16 @@
   "integrity" "sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0="
   "resolved" "https://registry.npmjs.org/punycode/-/punycode-1.3.2.tgz"
   "version" "1.3.2"
+
+"qrcode@^1.5.0":
+  "integrity" "sha512-9MgRpgVc+/+47dFvQeD6U2s0Z92EsKzcHogtum4QB+UNd025WOJSHvn/hjk9xmzj7Stj95CyUAs31mrjxliEsQ=="
+  "resolved" "https://registry.npmjs.org/qrcode/-/qrcode-1.5.0.tgz"
+  "version" "1.5.0"
+  dependencies:
+    "dijkstrajs" "^1.0.1"
+    "encode-utf8" "^1.0.3"
+    "pngjs" "^5.0.0"
+    "yargs" "^15.3.1"
 
 "qs@^6.10.0":
   "integrity" "sha512-wr7M2E0OFRfIfJZjKGieI8lBKb7fRCH4Fv5KNPEs7gJ8jadvotdsS08PzOKR7opXhZ/Xkjtt3WF9g38drmyRqQ=="
@@ -15113,6 +15138,14 @@
   "resolved" "https://registry.npmjs.org/react-native-progress-circle/-/react-native-progress-circle-2.1.0.tgz"
   "version" "2.1.0"
 
+"react-native-qrcode-svg@^6.1.2":
+  "integrity" "sha512-lMbbxoPVybXCp9SYm73Aj/0iZ9OlSZl2u+zpdbjgC4DYHBm9m9tDQxISNg1OPeR7AAzmyx8IV4JTFmk8G5R22g=="
+  "resolved" "https://registry.npmjs.org/react-native-qrcode-svg/-/react-native-qrcode-svg-6.1.2.tgz"
+  "version" "6.1.2"
+  dependencies:
+    "prop-types" "^15.7.2"
+    "qrcode" "^1.5.0"
+
 "react-native-ratings@^8.1.0":
   "integrity" "sha512-+QOJ4G3NjVkI1D+tk4EGx1dCvVfbD2nQdkrj9cXrcAoEiwmbep4z4bZbCKmWMpQ5h2dqbxABU8/eBnbDmvAc3g=="
   "resolved" "https://registry.npmjs.org/react-native-ratings/-/react-native-ratings-8.1.0.tgz"
@@ -15274,7 +15307,7 @@
   dependencies:
     "prop-types" "^15.5.0"
 
-"react-native@*", "react-native@^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || 1000.0.0", "react-native@^0.64.0", "react-native@>=0.14.0 <1", "react-native@>=0.42.0", "react-native@>=0.46", "react-native@>=0.46.0", "react-native@>=0.50.0", "react-native@>=0.55", "react-native@>=0.57", "react-native@>=0.57 <0.62", "react-native@>=0.57.0", "react-native@>=0.59", "react-native@>=0.60", "react-native@>=0.60.0", "react-native@>=0.61.5", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@>=0.64.0", "react-native@0.63.4":
+"react-native@*", "react-native@^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || 1000.0.0", "react-native@^0.64.0", "react-native@>=0.14.0 <1", "react-native@>=0.42.0", "react-native@>=0.46", "react-native@>=0.46.0", "react-native@>=0.50.0", "react-native@>=0.55", "react-native@>=0.57", "react-native@>=0.57 <0.62", "react-native@>=0.57.0", "react-native@>=0.59", "react-native@>=0.60", "react-native@>=0.60.0", "react-native@>=0.61.5", "react-native@>=0.62.0-rc.0 <0.64.0", "react-native@>=0.63.4", "react-native@>=0.64.0", "react-native@0.63.4":
   "integrity" "sha512-I4kM8kYO2mWEYUFITMcpRulcy4/jd+j9T6PbIzR0FuMcz/xwd+JwHoLPa1HmCesvR1RDOw9o4D+OFLwuXXfmGw=="
   "resolved" "https://registry.npmjs.org/react-native/-/react-native-0.63.4.tgz"
   "version" "0.63.4"
@@ -18712,7 +18745,7 @@
     "y18n" "^4.0.0"
     "yargs-parser" "^15.0.1"
 
-"yargs@^15.1.0", "yargs@^15.4.1":
+"yargs@^15.1.0", "yargs@^15.3.1", "yargs@^15.4.1":
   "integrity" "sha512-aePbxDmcYW++PaqBsJ+HYUFwCdv4LVvdnhBy78E57PIor8/OVvhMrADFFEDh8DHDFRv/O9i3lPhsENjO7QX0+A=="
   "resolved" "https://registry.npmjs.org/yargs/-/yargs-15.4.1.tgz"
   "version" "15.4.1"

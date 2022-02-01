@@ -6,6 +6,8 @@ import {thumbnails} from './DisplayInvoiceStyles';
 import {useTheme} from '_utils/styles/themeProvider';
 import {TextTypes, RouteNames} from '_utils/constans/Constants';
 import {createInvoice} from '../../../data/APIInterface';
+import QRCode from 'react-native-qrcode-svg';
+import {getWidth, windowWidth} from '_utils/helpers/interfaceDimensions';
 
 export default function DisplayInvoice({navigation, route}) {
   const theme = useTheme().theme;
@@ -14,6 +16,10 @@ export default function DisplayInvoice({navigation, route}) {
   return (
     <MainView testID="screen_feed">
       <ScrollView keyboardShouldPersistTaps={true}>
+        <QRCode
+          size={getWidth(windowWidth * 0.9)}
+          value={invoice?.ln_invoice}
+        />
         <Text type={TextTypes.BODY} light={true}>
           {invoice.ln_invoice}
         </Text>
