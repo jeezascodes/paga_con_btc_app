@@ -17,7 +17,7 @@ export default function ServiceDetail({navigation, route}) {
       service_id: service.id,
       email: 'jesus.gonzalez.xcv@gmail.com',
       amount: selectedAmount,
-      service_ref: '5563324289',
+      service_ref: '5563324292',
     };
     try {
       const invoice = await createInvoice(data);

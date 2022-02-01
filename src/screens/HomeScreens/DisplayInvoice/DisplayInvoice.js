@@ -31,18 +31,19 @@ export default function DisplayInvoice({navigation, route}) {
   };
 
   useEffect(() => {
-    let time = 300;
+    let time = 100;
     let interval;
-    if (currentPaymentStatus == PaymentStates.AWAITING_INVOICE_PAYMENT) {
-      interval = setInterval(() => {
-        if (time !== 0) {
-          time = time - 1;
-          onGetInvoiceStatus();
-        }
-      }, 1000);
-    }
+
+    interval = setInterval(() => {
+      if (time !== 0) {
+        time = time - 1;
+        onGetInvoiceStatus();
+      }
+    }, 1000);
+
     if (currentPaymentStatus == PaymentStates.SERVICE_PAID) {
-      clearInterval(interval);
+      time = 0;
+      console.log(`time`, time);
     } else if (time === 0) {
       clearInterval(interval);
     }
