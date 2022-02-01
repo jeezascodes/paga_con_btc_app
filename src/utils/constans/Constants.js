@@ -57,6 +57,13 @@ export const TextTypes = {
   TIRTIARY: 'Tirtiary',
 };
 
+export const PaymentStates = {
+  AWAITING_INVOICE_PAYMENT: 'AWAITING_INVOICE_PAYMENT',
+  INVOICE_PAID: 'INVOICE_PAID',
+  SERVICE_PAYMENT_IN_PROCESS: 'SERVICE_PAYMENT_IN_PROCESS',
+  SERVICE_PAID: 'SERVICE_PAID',
+};
+
 export const BadgeTypes = {
   DEFAULT: 'DEFAULT',
   CONTRAST: 'CONTRAST',

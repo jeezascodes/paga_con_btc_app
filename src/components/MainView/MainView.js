@@ -78,7 +78,9 @@ export default function MainView({
           </SafeAreaView>
         </View>
       ) : (
-        <SafeAreaView testID={testID} style={[mainViewStyles(theme, gradient)]}>
+        <SafeAreaView
+          testID={testID}
+          style={[mainViewStyles(theme, gradient), customStyles]}>
           {hideKeyboardOnpress ? (
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
               <View

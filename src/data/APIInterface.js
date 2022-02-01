@@ -20,3 +20,9 @@ export const createInvoice = data => {
     body: data,
   });
 };
+
+export const getPaymentStatus = id => {
+  return fetch(urls.paymentStatus(id), {
+    method: 'GET',
+  });
+};
