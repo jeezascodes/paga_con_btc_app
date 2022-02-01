@@ -13,3 +13,10 @@ export const getServicesList = () => {
     method: 'GET',
   });
 };
+
+export const createInvoice = data => {
+  return fetch(urls.payment, {
+    method: 'POST',
+    body: data,
+  });
+};

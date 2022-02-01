@@ -3,17 +3,12 @@ import Store from '_utils/helpers/store';
 import {statusCodes} from '_utils/constans/Constants';
 import {locallyStoredUserVariables} from '_utils/constans/Constants';
 
-const fetchHelper = async (url, options = {}, useToken = true) => {
+const fetchHelper = async (url, options = {}) => {
   const fetchOptions = {
     method: 'POST',
     headers: {},
     ...options,
   };
-
-  let token = await Store.get(locallyStoredUserVariables.ACCESS_TOKEN);
-  if (token && useToken) {
-    fetchOptions.headers.Authorization = `Bearer ${token}`;
-  }
 
   if (fetchOptions.method !== 'GET' && fetchOptions.body) {
     fetchOptions.headers['Content-Type'] = 'application/json';

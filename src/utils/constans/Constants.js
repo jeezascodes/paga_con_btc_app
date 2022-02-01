@@ -107,13 +107,7 @@ export const statusCodes = {
 };
 
 export const locallyStoredUserVariables = {
-  KVELL_USER_ID_KEY: 'userKvellId',
-  ACCESS_TOKEN: 'access_token',
-  REFRESH_TOKEN: 'refresh_token',
-  USER_ID: 'userId',
-  USER_COMPLETED_ACTIVITIES: 'userCompletedActivities',
-  TYPE_LOGIN: 'typeLogin',
-  COMPLETE_WIZARD: 'feedWizardComplete',
+  USER_STORED_EMAIL: 'userStoredEmail',
 };
 
 export const OsTypes = {

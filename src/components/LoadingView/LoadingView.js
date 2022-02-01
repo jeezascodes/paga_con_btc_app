@@ -9,8 +9,6 @@ import {useUser} from '_store/hooks/useUser';
 const LoadingView = () => {
   const {isUserLoggedIn} = useUser();
 
-  console.log(`isUserLoggedIn`, isUserLoggedIn);
-
   useEffect(() => {
     RNBootSplash.hide({fade: true});
     return () => {};

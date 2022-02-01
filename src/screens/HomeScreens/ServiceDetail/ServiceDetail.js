@@ -5,11 +5,25 @@ import {ScrollView, Image} from 'react-native';
 import {thumbnails} from './ServiceDetailStyles';
 import {useTheme} from '_utils/styles/themeProvider';
 import {TextTypes, RouteNames} from '_utils/constans/Constants';
-import {} from '../../../data/APIInterface';
+import {createInvoice} from '../../../data/APIInterface';
 
 export default function ServiceDetail({navigation, route}) {
   const theme = useTheme().theme;
   const service = route.params?.item;
+  const [selectedAmount, setSelectedAmount] = useState(0);
+
+  const onCreateInvoice = async () => {
+    data = {
+      service_id: service.id,
+      email: 'jesus.gonzalez.xcv@gmail.com',
+      amount: selectedAmount,
+    };
+    try {
+      const invoice = await createInvoice(data);
+    } catch (error) {
+      console.log(`error`, error);
+    }
+  };
 
   return (
     <MainView testID="screen_feed">
@@ -19,8 +33,24 @@ export default function ServiceDetail({navigation, route}) {
         <Text type={TextTypes.TIRTIARY} light={true}>
           {service.description}
         </Text>
-        <TextInput placeholder="Monto" />
-        <Button title="Añadir al carrtio" />
+
+        {service?.amount_restricted ? (
+          service.allowed_amounts?.map(amount => {
+            return (
+              <Button
+                title={amount}
+                onPress={() => setSelectedAmount(amount)}
+              />
+            );
+          })
+        ) : (
+          <TextInput placeholder="Monto" />
+        )}
+        <Button
+          title="Continuar"
+          disabled={!selectedAmount}
+          onPress={onCreateInvoice}
+        />
       </ScrollView>
     </MainView>
   );

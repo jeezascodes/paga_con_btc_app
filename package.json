@@ -5,7 +5,7 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start --port 9988",
+    "start": "react-native start",
     "test": "jest",
     "lint": "eslint .",
     "e2e:test": "detox test -c ios.sim.debug --headless",
