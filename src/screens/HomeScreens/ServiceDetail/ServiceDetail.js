@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import MainView from '_components/MainView/MainView';
 import {Button, Text, TextInput} from 'paga-con-btc-ui';
 import {ScrollView, Image} from 'react-native';
@@ -20,6 +20,9 @@ export default function ServiceDetail({navigation, route}) {
     };
     try {
       const invoice = await createInvoice(data);
+      navigation.navigate(RouteNames.DISPLAY_INVOICE, {
+        invoice: invoice.payload,
+      });
     } catch (error) {
       console.log(`error`, error);
     }

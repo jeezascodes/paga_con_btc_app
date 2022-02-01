@@ -45,6 +45,7 @@ export const RouteNames = {
   WELCOME: 'Welcome',
   PROFILE: 'Profile',
   SERVICE_DETAIL: 'ServiceDetail',
+  DISPLAY_INVOICE: 'DisplayInvoice',
 };
 
 export const TextTypes = {
