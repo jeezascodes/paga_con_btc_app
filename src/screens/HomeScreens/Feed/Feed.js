@@ -38,7 +38,7 @@ export default function Feed({navigation}) {
             feedStyles(theme).verticalSeparation,
             cardContainer,
           ]}>
-          <Text type={TextTypes.HEADLINEMEDIUM} light={true}>
+          <Text type={TextTypes.SUBHEADER} light={true}>
             Escoge un servicio
           </Text>
           {services?.map(item => {
@@ -50,7 +50,7 @@ export default function Feed({navigation}) {
                 style={cardWrapper}>
                 <Card>
                   <View style={{padding: getHeight(30)}}>
-                    <Image style={thumbnails} source={Logo} />
+                    <Image style={thumbnails} source={{uri: item.thumbnail}} />
                   </View>
                 </Card>
               </TouchableOpacity>
