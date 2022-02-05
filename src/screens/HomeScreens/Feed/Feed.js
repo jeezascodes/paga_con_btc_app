@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import MainView from '_components/MainView/MainView';
-import {Card, MainHeader} from 'paga-con-btc-ui';
+import {Card, MainHeader, Text} from 'paga-con-btc-ui';
 import {View, ScrollView, Image, TouchableOpacity} from 'react-native';
 import {feedStyles, thumbnails, cardContainer, cardWrapper} from './FeedStyles';
 import {useTheme} from '_utils/styles/themeProvider';
-import {RouteNames} from '_utils/constans/Constants';
+import {RouteNames, TextTypes} from '_utils/constans/Constants';
 import {getServicesList} from '../../../data/APIInterface';
 import {useUser} from '_store/hooks/useUser';
+import {getHeight} from '_utils/helpers/interfaceDimensions';
+import Logo from '../../../../assets/spotify.png';
 
 export default function Feed({navigation}) {
   const theme = useTheme().theme;
@@ -36,6 +38,9 @@ export default function Feed({navigation}) {
             feedStyles(theme).verticalSeparation,
             cardContainer,
           ]}>
+          <Text type={TextTypes.HEADLINEMEDIUM} light={true}>
+            Escoge un servicio
+          </Text>
           {services?.map(item => {
             return (
               <TouchableOpacity
@@ -44,7 +49,9 @@ export default function Feed({navigation}) {
                 }
                 style={cardWrapper}>
                 <Card>
-                  <Image style={thumbnails} source={{uri: item.thumbnail}} />
+                  <View style={{padding: getHeight(30)}}>
+                    <Image style={thumbnails} source={Logo} />
+                  </View>
                 </Card>
               </TouchableOpacity>
             );

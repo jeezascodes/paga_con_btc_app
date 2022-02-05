@@ -16,7 +16,7 @@ export default function Feed({navigation}) {
     actionsUser.logIn(email);
   };
   return (
-    <MainView testID="screen_feed">
+    <MainView testID="screen_feed" customStyles={{backgroundColor: '#c6bcbe'}}>
       <Welcome
         onButtonPress={onButtonPress}
         handleInputChange={handleInputChange}

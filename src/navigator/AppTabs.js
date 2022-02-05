@@ -43,7 +43,7 @@ export default function AppTabs() {
         inactiveTintColor: brandColor,
         showLabel: false,
         style: {
-          backgroundColor: AppColors(theme).white,
+          backgroundColor: AppColors(theme).black,
           shadowOpacity: 0.22,
           shadowRadius: 2.22,
           elevation: 0,
