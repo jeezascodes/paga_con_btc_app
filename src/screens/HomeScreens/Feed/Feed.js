@@ -75,11 +75,18 @@ export default function Feed({navigation}) {
                         />
                       </View>
                     }>
-                    <LinearGradient
+                    {/* <LinearGradient
                       start={{x: 0.0604, y: 0}}
                       end={{x: 1.1, y: 1}}
                       style={{flex: 1, borderRadius: getWidth(5)}}
-                      colors={colors}></LinearGradient>
+                      colors={colors}></LinearGradient> */}
+                    <View
+                      style={{
+                        flex: 1,
+                        height: '100%',
+                        backgroundColor: 'white',
+                      }}
+                    />
                   </MaskedView>
                   <Text
                     type={TextTypes.BODY}
