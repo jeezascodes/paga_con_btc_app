@@ -1,16 +1,22 @@
 import React, {useState} from 'react';
 import MainView from '_components/MainView/MainView';
 import {Button, Text, TextInput} from 'paga-con-btc-ui';
-import {ScrollView, Image} from 'react-native';
+import {ScrollView, Image, View} from 'react-native';
 import {thumbnails} from './ServiceDetailStyles';
 import {useTheme} from '_utils/styles/themeProvider';
-import {TextTypes, RouteNames} from '_utils/constans/Constants';
+import {
+  TextTypes,
+  RouteNames,
+  serviceCategories,
+} from '_utils/constans/Constants';
 import {createInvoice} from '../../../data/APIInterface';
 
 export default function ServiceDetail({navigation, route}) {
   const theme = useTheme().theme;
   const service = route.params?.item;
   const [selectedAmount, setSelectedAmount] = useState(0);
+  const [serviceRef, setServiceRef] = useState(null);
+  const isRefRequired = service.requires_service_ref;
 
   const onCreateInvoice = async () => {
     data = {
@@ -27,6 +33,34 @@ export default function ServiceDetail({navigation, route}) {
     } catch (error) {
       console.log(`error`, error);
     }
+  };
+
+  const renderRefEntering = () => {
+    return (
+      <View>
+        {service?.category == serviceCategories.PHONE_RECHARGE && (
+          <>
+            <TextInput
+              label="Número teléfonico"
+              isPhone={true}
+              placeholder="Número teléfonico"
+              onChangeText={setServiceRef}
+              value={serviceRef}
+            />
+          </>
+        )}
+        {service?.category == serviceCategories.SERVICE && (
+          <>
+            <TextInput
+              label="Número de cuenta o contrato"
+              placeholder="Número de cuenta o contrato"
+              onChangeText={setServiceRef}
+              value={serviceRef}
+            />
+          </>
+        )}
+      </View>
+    );
   };
 
   return (
@@ -50,6 +84,7 @@ export default function ServiceDetail({navigation, route}) {
         ) : (
           <TextInput placeholder="Monto" />
         )}
+        {isRefRequired && renderRefEntering()}
         <Button
           title="Continuar"
           disabled={!selectedAmount}

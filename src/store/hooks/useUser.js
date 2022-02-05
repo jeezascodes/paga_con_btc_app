@@ -1,8 +1,8 @@
-import {} from '_data/APIInterface';
 import {useDispatch, useSelector} from 'react-redux';
-import {setUser} from '_store/actions/userActions';
+import {setUser, setUserId} from '_store/actions/userActions';
+import Store from '_utils/helpers/store';
 
-import {} from '_utils/constans/Constants';
+import {locallyStoredUserVariables} from '_utils/constans/Constants';
 
 export const useUser = () => {
   const dispatch = useDispatch();
@@ -10,8 +10,10 @@ export const useUser = () => {
   const userStories = useSelector(state => state.user.userStories);
   const userInfo = useSelector(state => state.user.userInfo);
 
-  const logIn = async () => {
-    dispatch(setUser(1));
+  const logIn = async email => {
+    dispatch(setUserId(1));
+    Store(locallyStoredUserVariables.USER_STORED_EMAIL, email || '');
+    dispatch(setUser({email}));
   };
 
   const actionsUser = {logIn};

@@ -10,6 +10,10 @@ export const ACTIONS = {
   SET_IS_LOADING: 'SET_IS_LOADING',
 };
 
-export const setUser = data => {
+export const setUserId = data => {
   return {type: ACTIONS.SET_USER_ID, data};
+};
+
+export const setUser = data => {
+  return {type: ACTIONS.SET_USER_BASIC_DATA, data};
 };

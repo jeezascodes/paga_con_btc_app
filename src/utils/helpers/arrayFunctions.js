@@ -16,17 +16,6 @@ export const findAndReplace = (
   return newList;
 };
 
-export const optionsArrayToDict = optionsList => {
-  const result = optionsList.reduce(
-    (d, activity) => ({
-      ...d,
-      [activity.label]: activity.show_on_list ? '1' : '0',
-    }),
-    {},
-  );
-  return result;
-};
-
 export const calculateRealCount = stateOptions => {
   const doneFromOptions = stateOptions?.filter(item => item.done === true);
   return {

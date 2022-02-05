@@ -6,10 +6,12 @@ import {feedStyles, thumbnails, cardContainer, cardWrapper} from './FeedStyles';
 import {useTheme} from '_utils/styles/themeProvider';
 import {RouteNames} from '_utils/constans/Constants';
 import {getServicesList} from '../../../data/APIInterface';
+import {useUser} from '_store/hooks/useUser';
 
 export default function Feed({navigation}) {
   const theme = useTheme().theme;
   const [services, setServices] = useState([]);
+  const {user} = useUser();
 
   const getServices = async () => {
     const response = await getServicesList();
@@ -19,6 +21,8 @@ export default function Feed({navigation}) {
   useEffect(() => {
     getServices();
   }, []);
+
+  console.log(`user`, user);
 
   return (
     <MainView testID="screen_feed">

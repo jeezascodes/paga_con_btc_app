@@ -73,9 +73,11 @@ export const placeholderTexts = {
   BIRTH_DATE: 'MM/dd/yyyy',
 };
 
-export const FIRST_HELLO = 'hello';
-export const START_OVER = 'cancel';
-export const GO_BACK_COMMAND_CHAT = 'return';
+export const serviceCategories = {
+  SERVICE: 'SERVICE',
+  PHONE_RECHARGE: 'PHONE_RECHARGE',
+  GIFT_CARD: 'GIFT_CARD',
+};
 
 export const dateFormats = {
   SHORT_DATE: 'YYYY-MM-DD',
@@ -85,8 +87,6 @@ export const dateFormats = {
   MONTH_DAY: 'MMMM DD',
   WEEKDAY_NAME: 'dddd',
 };
-
-export const SHOW_ON_LIST = '1';
 
 export const SlidewayTextTypes = {
   ONLY_TITLE: 'ONLY_TITLE',
@@ -129,23 +129,7 @@ export const errorMessages = {
   WRONG: 'Something went wrong, please try again.',
   INVALID_NUMBER: 'Please use valid phone number',
 };
-export const firebaseErrors = {
-  VERIFICATION_CODE: 'auth/invalid-verification-code',
-  USER_NOT_FOUND: 'auth/user-not-found',
-  INVALID_NUMBER: 'auth/invalid-phone-number',
-};
+
 export const successMessages = {
   PROFILE_UPDATE: 'Profile updated successfully',
 };
-
-export const registrarionProviders = {APPLE: 'Apple', FIREBASE: 'Firebase'};
-
-export const FEEDBACK_COMMENT =
-  'Thanks for your feedback! Would you like to leave a comment?';
-
-export const LoginTypes = {
-  APPLE: 'Apple',
-  PHONE: 'Phone',
-};
-
-export const DefaultName = 'Hero';

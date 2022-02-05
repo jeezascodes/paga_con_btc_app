@@ -10,6 +10,9 @@ export const userReducer = (state = initialState, action) => {
     case ACTIONS.SET_USER_ID: {
       return {...state, userId: action.data};
     }
+    case ACTIONS.SET_USER_BASIC_DATA: {
+      return {...state, ...action.data};
+    }
     default:
       return state;
   }
