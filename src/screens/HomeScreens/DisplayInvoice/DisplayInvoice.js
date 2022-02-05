@@ -28,10 +28,14 @@ export default function DisplayInvoice({navigation, route}) {
   const {actionsUser} = useUser();
 
   const onGetInvoiceStatus = async () => {
-    const status = await getPaymentStatus(invoice?.id);
-    setCurrentPaymentStatus(status.payload?.status);
-    currentPaymentStatusV2 = status.payload?.status;
-    setpaymentData(status.payload);
+    try {
+      const status = await getPaymentStatus(invoice?.id);
+      setCurrentPaymentStatus(status.payload?.status);
+      currentPaymentStatusV2 = status.payload?.status;
+      setpaymentData(status.payload);
+    } catch (err) {
+      console.log(`err`, err);
+    }
   };
 
   useEffect(() => {
@@ -39,33 +43,18 @@ export default function DisplayInvoice({navigation, route}) {
     actionsUser.setInvoiceId(invoice?.id);
   }, []);
 
-  // useEffect(() => {
-  //   let time = 100;
-  //   let interval;
-
-  //   interval = setInterval(() => {
-  //     if (time !== 0) {
-  //       time = time - 1;
-  //       onGetInvoiceStatus();
-  //     }
-  //   }, 1000);
-
-  //   if (currentPaymentStatus == PaymentStates.SERVICE_PAID) {
-  //     time = 0;
-  //     console.log(`time`, time);
-  //   } else if (time === 0) {
-  //     clearInterval(interval);
-  //   }
-  // }, [currentPaymentStatus]);
-
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
+  const finalityStatusList = [
+    PaymentStates.SERVICE_PAID,
+    PaymentStates.SERVICE_PAYMENT_FAILED,
+    PaymentStates.INVOICE_EXPIRED,
+  ];
+
   const workerChecker = async () => {
-    console.log(`currentPaymentStatusV2`, currentPaymentStatusV2);
-    while (currentPaymentStatusV2 !== PaymentStates.SERVICE_PAID) {
-      console.log(`exec`, Date.now());
+    while (!finalityStatusList.includes(currentPaymentStatusV2)) {
       await sleep(1000);
       onGetInvoiceStatus();
     }
@@ -76,6 +65,10 @@ export default function DisplayInvoice({navigation, route}) {
     currentPaymentStatus == PaymentStates.INVOICE_PAID ||
     currentPaymentStatus == PaymentStates.SERVICE_PAYMENT_IN_PROCESS ||
     currentPaymentStatus == PaymentStates.SERVICE_PAID;
+
+  const failureStyles = {backgroundColor: 'red'};
+  const isFailure =
+    currentPaymentStatus == PaymentStates.SERVICE_PAYMENT_FAILED;
 
   const renderInvoiceState = () => {
     if (currentPaymentStatus == PaymentStates.INVOICE_PAID) {
@@ -129,7 +122,9 @@ export default function DisplayInvoice({navigation, route}) {
   };
 
   return (
-    <MainView testID="screen_feed" customStyles={isSuccess && successStyles}>
+    <MainView
+      testID="screen_feed"
+      customStyles={isSuccess ? successStyles : isFailure ? failureStyles : ''}>
       {currentPaymentStatus == PaymentStates.AWAITING_INVOICE_PAYMENT ? (
         <ScrollView keyboardShouldPersistTaps={true}>
           <QRCode
