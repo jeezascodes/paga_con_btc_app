@@ -30,3 +30,13 @@ export const AppColors = theme => {
 export const colorOpacity = (color = '', opacity = '') => {
   return color.replace('(', 'a(').replace(')', `,${opacity})`);
 };
+
+export const servicesColor = {
+  'd9b62d64-f279-42fb-b978-c6d7d93bc4c6': '#1f49a7',
+  '3a6992bb-8181-4209-a601-f2c53662f978': '#60c302',
+  '41aa65b0-73a8-4506-9cf2-75427e07a9fd': '#1bca5c',
+  '562cf92b-e3d2-47db-a5e8-5e58ed16936b': '#008654',
+  'e427f7c6-0028-4934-92b4-234884025106': '#f21a0c',
+  'e427f7c6-0028-4934-92b4-234884025106': '#f21a0c',
+  '44ab2f1d-9e90-4a02-aaf3-7f1a8cfd45e7': 'black',
+};

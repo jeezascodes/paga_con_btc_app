@@ -8,9 +8,9 @@ import {RouteNames, TextTypes} from '_utils/constans/Constants';
 import {getServicesList} from '../../../data/APIInterface';
 import {useUser} from '_store/hooks/useUser';
 import {getHeight, getWidth} from '_utils/helpers/interfaceDimensions';
-import Logo from '../../../../assets/spotify.png';
 import MaskedView from '@react-native-community/masked-view';
 import LinearGradient from 'react-native-linear-gradient';
+import {servicesColor} from '../../../utils/styles/AppColors';
 
 export default function Feed({navigation}) {
   const theme = useTheme().theme;
@@ -29,7 +29,7 @@ export default function Feed({navigation}) {
   const colors = ['#fda6ab', '#fe710a'];
 
   return (
-    <MainView testID="screen_feed">
+    <MainView testID="screen_feed" gradient={true}>
       {/* <MainHeader title={'Inicio'} /> */}
       <ScrollView
         keyboardShouldPersistTaps={true}
@@ -51,7 +51,8 @@ export default function Feed({navigation}) {
                   navigation.navigate(RouteNames.SERVICE_DETAIL, {item})
                 }
                 style={cardWrapper}>
-                <Card>
+                {/* <Card style={{backgroundColor: servicesColor[item.id]}}> */}
+                <Card style={{backgroundColor: '#ffffff30'}}>
                   {/* <View style={{padding: getHeight(30)}}>
                     <Image style={thumbnails} source={{uri: item.thumbnail}} />
                   </View> */}
@@ -88,13 +89,6 @@ export default function Feed({navigation}) {
                       }}
                     />
                   </MaskedView>
-                  <Text
-                    type={TextTypes.BODY}
-                    light={true}
-                    medium={true}
-                    style={{textAlign: 'center'}}>
-                    {name}
-                  </Text>
                 </Card>
               </TouchableOpacity>
             );

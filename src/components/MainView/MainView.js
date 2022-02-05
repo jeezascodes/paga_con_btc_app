@@ -28,7 +28,9 @@ export default function MainView({
   testID,
 }) {
   let theme = useTheme().theme;
-  const colors = [Colors(theme).gradientStart, Colors(theme).gradientEnd];
+  // const colors = [Colors(theme).gradientStart, Colors(theme).gradientEnd];
+
+  const colors = ['#fda6ab70', '#fe710a70'];
   return (
     <>
       {gradient ? (
