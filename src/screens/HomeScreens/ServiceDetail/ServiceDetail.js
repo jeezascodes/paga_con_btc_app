@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import MainView from '_components/MainView/MainView';
 import {Button, Text, TextInput} from 'paga-con-btc-ui';
 import {ScrollView, Image, View} from 'react-native';
@@ -8,8 +8,10 @@ import {
   TextTypes,
   RouteNames,
   serviceCategories,
+  locallyStoredUserVariables,
 } from '_utils/constans/Constants';
 import {createInvoice} from '../../../data/APIInterface';
+import Store from '_utils/helpers/store';
 
 export default function ServiceDetail({navigation, route}) {
   const theme = useTheme().theme;
@@ -17,14 +19,16 @@ export default function ServiceDetail({navigation, route}) {
   const [selectedAmount, setSelectedAmount] = useState(0);
   const [serviceRef, setServiceRef] = useState(null);
   const isRefRequired = service.requires_service_ref;
+  const [email, setEmail] = useState('');
 
   const onCreateInvoice = async () => {
     data = {
       service_id: service.id,
-      email: 'jesus.gonzalez.xcv@gmail.com',
+      email,
       amount: selectedAmount,
-      service_ref: '5563324292',
+      service_ref: serviceRef,
     };
+    console.log(`data`, data);
     try {
       const invoice = await createInvoice(data);
       navigation.navigate(RouteNames.DISPLAY_INVOICE, {
@@ -35,6 +39,17 @@ export default function ServiceDetail({navigation, route}) {
     }
   };
 
+  const retrieveEmail = async () => {
+    const retrievedEmail = await Store.get(
+      locallyStoredUserVariables.USER_STORED_EMAIL,
+    );
+    setEmail(retrievedEmail);
+  };
+
+  useEffect(() => {
+    retrieveEmail();
+  }, []);
+
   const renderRefEntering = () => {
     return (
       <View>
@@ -42,10 +57,13 @@ export default function ServiceDetail({navigation, route}) {
           <>
             <TextInput
               label="Número teléfonico"
-              isPhone={true}
               placeholder="Número teléfonico"
               onChangeText={setServiceRef}
               value={serviceRef}
+              maxLength={30}
+              keyboardType="phone-pad"
+              returnKeyLabel="Done"
+              returnKeyType="done"
             />
           </>
         )}
@@ -85,6 +103,12 @@ export default function ServiceDetail({navigation, route}) {
           <TextInput placeholder="Monto" />
         )}
         {isRefRequired && renderRefEntering()}
+        <TextInput
+          placeholder="Correo electrónico"
+          label="Correo electrónico"
+          value={email}
+          onChangeText={setEmail}
+        />
         <Button
           title="Continuar"
           disabled={!selectedAmount}

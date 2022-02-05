@@ -11,8 +11,9 @@ export const useUser = () => {
   const userInfo = useSelector(state => state.user.userInfo);
 
   const logIn = async email => {
+    console.log(`email`, email);
     dispatch(setUserId(1));
-    Store(locallyStoredUserVariables.USER_STORED_EMAIL, email || '');
+    await Store.set(locallyStoredUserVariables.USER_STORED_EMAIL, email || '');
     dispatch(setUser({email}));
   };
 
