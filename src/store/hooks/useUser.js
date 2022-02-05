@@ -11,13 +11,16 @@ export const useUser = () => {
   const userInfo = useSelector(state => state.user.userInfo);
 
   const logIn = async email => {
-    console.log(`email`, email);
     dispatch(setUserId(1));
     await Store.set(locallyStoredUserVariables.USER_STORED_EMAIL, email || '');
     dispatch(setUser({email}));
   };
 
-  const actionsUser = {logIn};
+  const setInvoiceId = async id => {
+    await Store.set(locallyStoredUserVariables.INVOICE_ID, id || '');
+  };
+
+  const actionsUser = {logIn, setInvoiceId};
   return {
     userInfo,
     userStories,

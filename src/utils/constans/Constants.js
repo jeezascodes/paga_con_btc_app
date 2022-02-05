@@ -62,6 +62,8 @@ export const PaymentStates = {
   INVOICE_PAID: 'INVOICE_PAID',
   SERVICE_PAYMENT_IN_PROCESS: 'SERVICE_PAYMENT_IN_PROCESS',
   SERVICE_PAID: 'SERVICE_PAID',
+  SERVICE_PAYMENT_FAILED: 'SERVICE_PAYMENT_FAILED',
+  INVOICE_EXPIRED: 'INVOICE_EXPIRED',
 };
 
 export const BadgeTypes = {
@@ -116,6 +118,7 @@ export const statusCodes = {
 
 export const locallyStoredUserVariables = {
   USER_STORED_EMAIL: 'userStoredEmail',
+  INVOICE_ID: 'invoiceId',
 };
 
 export const OsTypes = {

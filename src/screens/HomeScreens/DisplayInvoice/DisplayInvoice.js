@@ -13,41 +13,63 @@ import {
 import {getPaymentStatus} from '../../../data/APIInterface';
 import QRCode from 'react-native-qrcode-svg';
 import {getWidth, windowWidth} from '_utils/helpers/interfaceDimensions';
+import {useUser} from '_store/hooks/useUser';
 
 export default function DisplayInvoice({navigation, route}) {
-  const theme = useTheme().theme;
   const invoice = route.params?.invoice;
+  const service = route.params?.service;
   const [isLoading, setIsLoading] = useState(false);
   const [currentPaymentStatus, setCurrentPaymentStatus] = useState(
     PaymentStates.AWAITING_INVOICE_PAYMENT,
   );
+
+  let currentPaymentStatusV2 = PaymentStates.AWAITING_INVOICE_PAYMENT;
   const [paymentData, setpaymentData] = useState(null);
+  const {actionsUser} = useUser();
 
   const onGetInvoiceStatus = async () => {
     const status = await getPaymentStatus(invoice?.id);
-    console.log(`status.payload?.status)`, status.payload?.status);
     setCurrentPaymentStatus(status.payload?.status);
+    currentPaymentStatusV2 = status.payload?.status;
     setpaymentData(status.payload);
   };
 
   useEffect(() => {
-    let time = 100;
-    let interval;
+    workerChecker();
+    actionsUser.setInvoiceId(invoice?.id);
+  }, []);
 
-    interval = setInterval(() => {
-      if (time !== 0) {
-        time = time - 1;
-        onGetInvoiceStatus();
-      }
-    }, 1000);
+  // useEffect(() => {
+  //   let time = 100;
+  //   let interval;
 
-    if (currentPaymentStatus == PaymentStates.SERVICE_PAID) {
-      time = 0;
-      console.log(`time`, time);
-    } else if (time === 0) {
-      clearInterval(interval);
+  //   interval = setInterval(() => {
+  //     if (time !== 0) {
+  //       time = time - 1;
+  //       onGetInvoiceStatus();
+  //     }
+  //   }, 1000);
+
+  //   if (currentPaymentStatus == PaymentStates.SERVICE_PAID) {
+  //     time = 0;
+  //     console.log(`time`, time);
+  //   } else if (time === 0) {
+  //     clearInterval(interval);
+  //   }
+  // }, [currentPaymentStatus]);
+
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  const workerChecker = async () => {
+    console.log(`currentPaymentStatusV2`, currentPaymentStatusV2);
+    while (currentPaymentStatusV2 !== PaymentStates.SERVICE_PAID) {
+      console.log(`exec`, Date.now());
+      await sleep(1000);
+      onGetInvoiceStatus();
     }
-  }, [currentPaymentStatus]);
+  };
 
   const successStyles = {backgroundColor: 'green'};
   const isSuccess =

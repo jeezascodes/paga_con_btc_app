@@ -33,6 +33,7 @@ export default function ServiceDetail({navigation, route}) {
       const invoice = await createInvoice(data);
       navigation.navigate(RouteNames.DISPLAY_INVOICE, {
         invoice: invoice.payload,
+        service,
       });
     } catch (error) {
       console.log(`error`, error);
@@ -100,7 +101,15 @@ export default function ServiceDetail({navigation, route}) {
             );
           })
         ) : (
-          <TextInput placeholder="Monto" />
+          <TextInput
+            label="Monto"
+            placeholder="Monto"
+            onChangeText={setSelectedAmount}
+            value={selectedAmount}
+            keyboardType="numeric"
+            returnKeyLabel="Done"
+            returnKeyType="done"
+          />
         )}
         {isRefRequired && renderRefEntering()}
         <TextInput
