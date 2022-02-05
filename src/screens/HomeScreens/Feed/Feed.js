@@ -7,8 +7,10 @@ import {useTheme} from '_utils/styles/themeProvider';
 import {RouteNames, TextTypes} from '_utils/constans/Constants';
 import {getServicesList} from '../../../data/APIInterface';
 import {useUser} from '_store/hooks/useUser';
-import {getHeight} from '_utils/helpers/interfaceDimensions';
+import {getHeight, getWidth} from '_utils/helpers/interfaceDimensions';
 import Logo from '../../../../assets/spotify.png';
+import MaskedView from '@react-native-community/masked-view';
+import LinearGradient from 'react-native-linear-gradient';
 
 export default function Feed({navigation}) {
   const theme = useTheme().theme;
@@ -24,7 +26,7 @@ export default function Feed({navigation}) {
     getServices();
   }, []);
 
-  console.log(`user`, user);
+  const colors = ['#fda6ab', '#fe710a'];
 
   return (
     <MainView testID="screen_feed">
@@ -32,16 +34,17 @@ export default function Feed({navigation}) {
       <ScrollView
         keyboardShouldPersistTaps={true}
         style={feedStyles(theme).scrollView}>
+        {/* <Text type={TextTypes.SUBHEADER} light={true}>
+          Escoge un servicio
+        </Text> */}
         <View
           style={[
             feedStyles(theme).HorizontalViewStyles,
             feedStyles(theme).verticalSeparation,
             cardContainer,
           ]}>
-          <Text type={TextTypes.SUBHEADER} light={true}>
-            Escoge un servicio
-          </Text>
           {services?.map(item => {
+            let name = item.name.includes('CFE') ? 'CFE' : item.name;
             return (
               <TouchableOpacity
                 onPress={() =>
@@ -49,9 +52,42 @@ export default function Feed({navigation}) {
                 }
                 style={cardWrapper}>
                 <Card>
-                  <View style={{padding: getHeight(30)}}>
+                  {/* <View style={{padding: getHeight(30)}}>
                     <Image style={thumbnails} source={{uri: item.thumbnail}} />
-                  </View>
+                  </View> */}
+                  <MaskedView
+                    style={{
+                      flex: 1,
+                      flexDirection: 'row',
+                      height: getHeight(100),
+                    }}
+                    maskElement={
+                      <View
+                        style={{
+                          backgroundColor: 'transparent',
+                          flex: 1,
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                        }}>
+                        <Image
+                          style={thumbnails}
+                          source={{uri: item.thumbnail}}
+                        />
+                      </View>
+                    }>
+                    <LinearGradient
+                      start={{x: 0.0604, y: 0}}
+                      end={{x: 1.1, y: 1}}
+                      style={{flex: 1, borderRadius: getWidth(5)}}
+                      colors={colors}></LinearGradient>
+                  </MaskedView>
+                  <Text
+                    type={TextTypes.BODY}
+                    light={true}
+                    medium={true}
+                    style={{textAlign: 'center'}}>
+                    {name}
+                  </Text>
                 </Card>
               </TouchableOpacity>
             );

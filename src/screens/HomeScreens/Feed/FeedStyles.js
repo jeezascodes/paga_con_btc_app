@@ -32,18 +32,18 @@ export const feedStyles = (theme, isListDone) => {
 };
 
 export const thumbnails = {
-  width: '100%',
+  width: '90%',
   height: getHeight(100),
   resizeMode: 'contain',
 };
 
 export const cardContainer = {
-  // flexDirection: 'row',
-  // justifyContent: 'space-between',
-  // flexWrap: 'wrap',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
 };
 
 export const cardWrapper = {
-  // width: '47%',
+  width: '47%',
   paddingVertical: getWidth(10),
 };
