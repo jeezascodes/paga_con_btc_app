@@ -8,16 +8,16 @@ export const FixedColors = () => {
 export const AppColors = theme => {
   if (theme === ThemeTypes.DARK) {
     return {
-      background: 'rgb(0,0,0)',
+      background: '#c6bcbe',
       brandColor: 'rgb(248, 202, 18)',
-      black: 'rgb(0,0,0)',
+      black: '#c6bcbe',
       textColor: 'white',
       lightText: 'white',
       white: 'white',
     };
   } else {
     return {
-      background: 'rgb(0,0,0)',
+      background: '#c6bcbe',
       brandColor: 'rgb(248, 202, 18)',
       black: 'rgb(0,0,0)',
       textColor: 'rgb(0,0,0)',

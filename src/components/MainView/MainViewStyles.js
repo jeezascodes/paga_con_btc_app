@@ -8,7 +8,7 @@ import {
 
 export function mainViewStyles(theme, gradient, horizontalMargin) {
   return {
-    backgroundColor: AppColors(theme).black,
+    backgroundColor: AppColors(theme).background,
     flex: 1,
     containerPadding: {
       marginHorizontal: getWidth(20),

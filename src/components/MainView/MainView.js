@@ -4,6 +4,7 @@ import {
   View,
   TouchableWithoutFeedback,
   Keyboard,
+  StatusBar,
 } from 'react-native';
 import {useTheme} from '../../utils/styles/themeProvider';
 import {
@@ -81,6 +82,14 @@ export default function MainView({
         <SafeAreaView
           testID={testID}
           style={[mainViewStyles(theme, gradient), customStyles]}>
+          <StatusBar
+            animated={true}
+            translucent
+            backgroundColor="red"
+            barStyle={'light-content'}
+            showHideTransition={'fade'}
+            hidden={false}
+          />
           {hideKeyboardOnpress ? (
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
               <View
