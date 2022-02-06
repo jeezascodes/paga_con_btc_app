@@ -33,7 +33,7 @@ export default function MainView({
   let theme = useTheme().theme;
   // const colors = [Colors(theme).gradientStart, Colors(theme).gradientEnd];
 
-  const colors = ['#fda6ab70', '#fe710a70'];
+  const colors = ['rgba(253, 166, 171, 0.44)', 'rgba(254, 113, 10, 0.44)'];
   return (
     <>
       {gradient ? (
@@ -44,10 +44,7 @@ export default function MainView({
         //   style={flexContent}
         //   colors={colors}>
         <>
-          <AnimatedLinearGradient
-            customColors={presetColors.instagram}
-            speed={4000}
-          />
+          <AnimatedLinearGradient customColors={colors} speed={4000} />
 
           <SafeAreaView
             style={[

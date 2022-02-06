@@ -1,6 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import MainView from '_components/MainView/MainView';
-import {Card, MainHeader, Text, HorizontalSlider} from 'paga-con-btc-ui';
+import {
+  Card,
+  MainHeader,
+  Text,
+  HorizontalSlider,
+  ModalSwipe,
+  TextInput,
+} from 'paga-con-btc-ui';
 import {View, ScrollView, Image, TouchableOpacity} from 'react-native';
 import {
   feedStyles,
@@ -9,6 +16,7 @@ import {
   cardWrapper,
   scrollViewStyles,
   emoji,
+  backgroundLayout,
 } from './FeedStyles';
 import {useTheme} from '_utils/styles/themeProvider';
 import {
@@ -25,6 +33,8 @@ import {servicesColor} from '../../../utils/styles/AppColors';
 import Telephone from '../../../../assets/telephone.png';
 import Movie from '../../../../assets/movie.png';
 import ServiceIcon from '../../../../assets/service.png';
+import {ImageBackground} from 'react-native';
+import BackgroundImage from '../../../../assets/paga_con.jpeg';
 
 export default function Feed({navigation}) {
   const theme = useTheme().theme;
@@ -53,6 +63,15 @@ export default function Feed({navigation}) {
   const genericServices = services?.filter(
     item => item.category == serviceCategories.SERVICE,
   );
+
+  const refModal = useRef(null);
+
+  const showModal = () => {
+    refModal.current?.showModal();
+  };
+  const closeModal = () => {
+    refModal.current?.closeModal();
+  };
 
   const topProducts = list =>
     list?.map(item => {
@@ -92,38 +111,87 @@ export default function Feed({navigation}) {
     });
 
   return (
-    <MainView testID="screen_feed" gradient={false}>
-      {/* <MainHeader title={'Inicio'} /> */}
-      <ScrollView keyboardShouldPersistTaps={true} style={scrollViewStyles}>
-        <View style={[feedStyles(theme).HorizontalViewStyles, cardContainer]}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Text type={TextTypes.SUBHEADER} bold={true}>
-              Recarga telefónica
-            </Text>
-            <Image source={Telephone} style={emoji} />
-          </View>
+    <>
+      <ModalSwipe
+        showInfoIcon={false}
+        ref={refModal}
+        enabledInnerScrolling={true}>
+        <ScrollView keyboardShouldPersistTaps={true} style={scrollViewStyles}>
+          <View style={[cardContainer]}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginBottom: getHeight(10),
+              }}>
+              <Text type={TextTypes.SUBHEADER} bold={true}>
+                Recarga telefónica
+              </Text>
+              {/* <Image source={Telephone} style={emoji} /> */}
+            </View>
 
-          <HorizontalSlider data={topProducts(phoneServices)} />
-        </View>
-        <View style={[feedStyles(theme).HorizontalViewStyles, cardContainer]}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Text type={TextTypes.SUBHEADER} bold={true}>
-              Entretenimiento
-            </Text>
-            <Image source={Movie} style={emoji} />
+            <HorizontalSlider data={topProducts(phoneServices)} />
           </View>
-          <HorizontalSlider data={topProducts(giftCard)} />
-        </View>
-        <View style={[feedStyles(theme).HorizontalViewStyles, cardContainer]}>
-          <View style={{flexDirection: 'row', alignItems: 'center'}}>
-            <Text type={TextTypes.SUBHEADER} bold={true}>
-              Servicios públicos
-            </Text>
-            <Image source={ServiceIcon} style={emoji} />
+          <View style={[cardContainer]}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginBottom: getHeight(10),
+              }}>
+              <Text type={TextTypes.SUBHEADER} bold={true}>
+                Entretenimiento
+              </Text>
+              {/* <Image source={Movie} style={emoji} /> */}
+            </View>
+            <HorizontalSlider data={topProducts(giftCard)} />
           </View>
-          <HorizontalSlider data={topProducts(genericServices)} />
+          <View style={[cardContainer]}>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginBottom: getHeight(10),
+              }}>
+              <Text type={TextTypes.SUBHEADER} bold={true}>
+                Servicios públicos
+              </Text>
+              {/* <Image source={ServiceIcon} style={emoji} /> */}
+            </View>
+            <HorizontalSlider data={topProducts(genericServices)} />
+          </View>
+        </ScrollView>
+      </ModalSwipe>
+      <MainView testID="screen_feed" gradient={true}>
+        <View
+          style={{
+            height: getHeight(300),
+            backgroundColor: 'transparent',
+            paddingHorizontal: getWidth(20),
+            paddingTop: getHeight(20),
+          }}>
+          <Text type={TextTypes.HEADLINEMEDIUM} bold={true} light={true}>
+            Explorar
+          </Text>
+          <TextInput
+            label=""
+            placeholder="Buscar"
+            onChangeText={() => {}}
+            value={''}
+            maxLength={30}
+            keyboardType="phone-pad"
+            returnKeyLabel="Done"
+            returnKeyType="done"
+          />
+
+          {/* <LinearGradient
+            start={{x: 0.0604, y: 0}}
+            end={{x: 1.1, y: 1}}
+            style={{flex: 1}}
+            colors={colors}></LinearGradient> */}
         </View>
-      </ScrollView>
-    </MainView>
+        {/* <MainHeader title={'Inicio'} /> */}
+      </MainView>
+    </>
   );
 }

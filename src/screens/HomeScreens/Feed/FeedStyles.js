@@ -53,13 +53,19 @@ export const cardWrapper = {
 };
 
 export const scrollViewStyles = {
-  // backgroundColor: '#f7f7f7',
-  // borderBottomLeftRadius: getWidth(40),
-  // borderBottomRightRadius: getWidth(40),
+  marginTop: getHeight(40),
+  minHeight: getHeight(950),
+  height: '100%',
 };
 
 export const emoji = {
   width: getHeight(25),
   resizeMode: 'contain',
   marginLeft: getWidth(10),
+};
+
+export const backgroundLayout = {
+  width: '100%',
+  height: '100%',
+  opacity: 0.2,
 };
