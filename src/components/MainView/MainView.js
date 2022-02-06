@@ -16,6 +16,9 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import {Colors} from '../../utils/styles';
 import {flexContent} from '_utils/styles/globalStyles';
+import AnimatedLinearGradient, {
+  presetColors,
+} from 'react-native-animated-linear-gradient';
 
 export default function MainView({
   children,
@@ -34,12 +37,18 @@ export default function MainView({
   return (
     <>
       {gradient ? (
-        <LinearGradient
-          testID={testID}
-          start={{x: 0.0604, y: 0}}
-          end={{x: 1.1, y: 1}}
-          style={flexContent}
-          colors={colors}>
+        // <LinearGradient
+        //   testID={testID}
+        //   start={{x: 0.0604, y: 0}}
+        //   end={{x: 1.1, y: 1}}
+        //   style={flexContent}
+        //   colors={colors}>
+        <>
+          <AnimatedLinearGradient
+            customColors={presetColors.instagram}
+            speed={4000}
+          />
+
           <SafeAreaView
             style={[
               horizontalPadding && mainViewStyles(theme).containerPadding,
@@ -47,8 +56,9 @@ export default function MainView({
             ]}>
             {children}
           </SafeAreaView>
-        </LinearGradient>
-      ) : gradientHorizontal ? (
+        </>
+      ) : // </LinearGradient>
+      gradientHorizontal ? (
         <LinearGradient
           start={{x: 0.0604, y: 0}}
           end={{x: 1.1, y: 1}}

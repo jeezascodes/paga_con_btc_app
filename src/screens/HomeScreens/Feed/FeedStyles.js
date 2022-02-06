@@ -1,4 +1,8 @@
-import {getHeight, getWidth} from '_utils/helpers/interfaceDimensions';
+import {
+  getHeight,
+  getWidth,
+  windowWidth,
+} from '_utils/helpers/interfaceDimensions';
 
 export const feedStyles = (theme, isListDone) => {
   const ModalContainer = {
@@ -14,7 +18,7 @@ export const feedStyles = (theme, isListDone) => {
   }
   return {
     topMargin: {marginTop: getHeight(30)},
-    verticalSeparation: {marginVertical: getHeight(28)},
+    verticalSeparation: {marginVertical: getHeight(18)},
     titleStyles: {marginBottom: getHeight(15)},
     HorizontalViewStyles: {
       marginHorizontal: getWidth(19),
@@ -38,12 +42,24 @@ export const thumbnails = {
 };
 
 export const cardContainer = {
-  // flexDirection: 'row',
-  // justifyContent: 'space-between',
-  // flexWrap: 'wrap',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+  flexWrap: 'wrap',
 };
 
 export const cardWrapper = {
-  // width: '47%',
-  paddingVertical: getWidth(10),
+  width: windowWidth / 1.8,
+  paddingBottom: getWidth(10),
+};
+
+export const scrollViewStyles = {
+  // backgroundColor: '#f7f7f7',
+  // borderBottomLeftRadius: getWidth(40),
+  // borderBottomRightRadius: getWidth(40),
+};
+
+export const emoji = {
+  width: getHeight(25),
+  resizeMode: 'contain',
+  marginLeft: getWidth(10),
 };
