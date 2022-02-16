@@ -4,7 +4,7 @@ export const GlobalStyles = () => {
   return {
     topMargin: {marginTop: getHeight(30)},
     verticalSeparation: {marginVertical: getHeight(28)},
-    horizontalPadding: {paddingHorizontal: getHeight(28)},
+    horizontalPadding: {paddingHorizontal: getHeight(20)},
     HorizontalViewStyles: {
       marginHorizontal: getWidth(19),
     },

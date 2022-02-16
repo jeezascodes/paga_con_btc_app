@@ -2,16 +2,21 @@ import React, {useState, useEffect} from 'react';
 import MainView from '_components/MainView/MainView';
 import {Button, Text, TextInput} from 'paga-con-btc-ui';
 import {ScrollView, Image, View} from 'react-native';
-import {thumbnails} from './ServiceDetailStyles';
+import {thumbnails, container} from './ServiceDetailStyles';
 import {useTheme} from '_utils/styles/themeProvider';
 import {
   TextTypes,
   RouteNames,
   serviceCategories,
   locallyStoredUserVariables,
+  ButtonTypes,
+  ButtonPaddingTypes,
 } from '_utils/constans/Constants';
 import {createInvoice} from '../../../data/APIInterface';
 import Store from '_utils/helpers/store';
+import {getHeight, getWidth} from '_utils/helpers/interfaceDimensions';
+import {AppColors} from '_utils/styles';
+import {GlobalStyles} from '_utils/styles/globalStyles';
 
 export default function ServiceDetail({navigation, route}) {
   const theme = useTheme().theme;
@@ -57,7 +62,7 @@ export default function ServiceDetail({navigation, route}) {
         {service?.category == serviceCategories.PHONE_RECHARGE && (
           <>
             <TextInput
-              label="Número teléfonico"
+              label=""
               placeholder="Número teléfonico"
               onChangeText={setServiceRef}
               value={serviceRef}
@@ -71,7 +76,7 @@ export default function ServiceDetail({navigation, route}) {
         {service?.category == serviceCategories.SERVICE && (
           <>
             <TextInput
-              label="Número de cuenta o contrato"
+              label=""
               placeholder="Número de cuenta o contrato"
               onChangeText={setServiceRef}
               value={serviceRef}
@@ -84,25 +89,42 @@ export default function ServiceDetail({navigation, route}) {
 
   return (
     <MainView testID="screen_feed">
-      <ScrollView keyboardShouldPersistTaps={true}>
-        <Image style={thumbnails} source={{uri: service.thumbnail}} />
-        <Text light={true}>{service.name}</Text>
-        <Text type={TextTypes.TIRTIARY} light={true}>
-          {service.description}
-        </Text>
+      <ScrollView style={container} keyboardShouldPersistTaps={true}>
+        <Image
+          style={[thumbnails, GlobalStyles().topMargin]}
+          source={{uri: service.thumbnail}}
+        />
+        <View style={{marginBottom: getHeight(30), marginTop: getHeight(15)}}>
+          <Text type={TextTypes.HEADLINEMEDIUM} bold={true}>
+            {service.name}
+          </Text>
+          <Text type={TextTypes.TIRTIARY}>{service.description}</Text>
+        </View>
 
+        {service?.amount_restricted && (
+          <Text bold={true}>Selecciona un monto</Text>
+        )}
         {service?.amount_restricted ? (
           service.allowed_amounts?.map(amount => {
+            let isSelected = amount == selectedAmount;
             return (
               <Button
-                title={amount}
+                type={ButtonTypes.SECONDARY}
+                verticalPadding={ButtonPaddingTypes.THIN}
+                title={`${amount} MXN`}
                 onPress={() => setSelectedAmount(amount)}
+                customStyles={[
+                  isSelected && {
+                    backgroundColor: AppColors().brandColor,
+                    borderWidth: 0,
+                  },
+                ]}
               />
             );
           })
         ) : (
           <TextInput
-            label="Monto"
+            label=""
             placeholder="Monto"
             onChangeText={setSelectedAmount}
             value={selectedAmount}
@@ -111,18 +133,22 @@ export default function ServiceDetail({navigation, route}) {
             returnKeyType="done"
           />
         )}
-        {isRefRequired && renderRefEntering()}
-        <TextInput
-          placeholder="Correo electrónico"
-          label="Correo electrónico"
-          value={email}
-          onChangeText={setEmail}
-        />
-        <Button
-          title="Continuar"
-          disabled={!selectedAmount}
-          onPress={onCreateInvoice}
-        />
+        <View style={GlobalStyles().verticalSeparation}>
+          {isRefRequired && renderRefEntering()}
+          <TextInput
+            placeholder="Correo electrónico"
+            label=""
+            value={email}
+            onChangeText={setEmail}
+          />
+          <View style={GlobalStyles().verticalSeparation}>
+            <Button
+              title="Continuar"
+              disabled={!selectedAmount}
+              onPress={onCreateInvoice}
+            />
+          </View>
+        </View>
       </ScrollView>
     </MainView>
   );

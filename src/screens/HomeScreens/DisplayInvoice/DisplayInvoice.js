@@ -110,10 +110,10 @@ export default function DisplayInvoice({navigation, route}) {
             width="60"
             height="60"
           />
-          <Text type={TextTypes.BODY} light={true}>
+          <Text type={TextTypes.BODY} light={false}>
             Servicio pago con éxito
           </Text>
-          <Text type={TextTypes.BODY} light={true}>
+          <Text type={TextTypes.BODY} light={false}>
             {paymentData.payment_folio}
           </Text>
         </View>
@@ -131,19 +131,19 @@ export default function DisplayInvoice({navigation, route}) {
             size={getWidth(windowWidth * 0.9)}
             value={invoice?.ln_invoice}
           />
-          <Text type={TextTypes.BODY} light={true}>
+          <Text type={TextTypes.BODY} light={false}>
             {invoice.ln_invoice}
           </Text>
-          <Text type={TextTypes.BODY} light={true}>
+          <Text type={TextTypes.BODY} light={false}>
             {invoice.amount_mxn}
           </Text>
-          <Text type={TextTypes.BODY} light={true}>
+          <Text type={TextTypes.BODY} light={false}>
             {invoice.amount_sats}
           </Text>
-          <Text type={TextTypes.BODY} light={true}>
+          <Text type={TextTypes.BODY} light={false}>
             {invoice.exchange_rate}
           </Text>
-          <Text type={TextTypes.BODY} light={true}>
+          <Text type={TextTypes.BODY} light={false}>
             {invoice.expires_at}
           </Text>
           <Button title="Continuar" />
