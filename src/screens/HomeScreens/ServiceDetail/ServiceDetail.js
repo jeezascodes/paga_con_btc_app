@@ -16,7 +16,9 @@ import {createInvoice} from '../../../data/APIInterface';
 import Store from '_utils/helpers/store';
 import {getHeight, getWidth} from '_utils/helpers/interfaceDimensions';
 import {AppColors} from '_utils/styles';
+import {servicesColor} from '../../../utils/styles/AppColors';
 import {GlobalStyles} from '_utils/styles/globalStyles';
+import MaskedView from '@react-native-community/masked-view';
 
 export default function ServiceDetail({navigation, route}) {
   const theme = useTheme().theme;
@@ -88,21 +90,55 @@ export default function ServiceDetail({navigation, route}) {
   };
 
   return (
-    <MainView testID="screen_feed">
+    <MainView
+      testID="screen_feed"
+      customStyles={{backgroundColor: servicesColor[service.id]}}>
       <ScrollView style={container} keyboardShouldPersistTaps={true}>
-        <Image
+        {/* <Image
           style={[thumbnails, GlobalStyles().topMargin]}
           source={{uri: service.thumbnail}}
-        />
+        /> */}
+        <MaskedView
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            height: getHeight(150),
+          }}
+          maskElement={
+            <View
+              style={{
+                backgroundColor: 'transparent',
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}>
+              <Image
+                style={[thumbnails, GlobalStyles().topMargin]}
+                source={{uri: service.thumbnail}}
+              />
+            </View>
+          }>
+          <View
+            style={{
+              flex: 1,
+              height: '100%',
+              backgroundColor: 'white',
+            }}
+          />
+        </MaskedView>
         <View style={{marginBottom: getHeight(30), marginTop: getHeight(15)}}>
-          <Text type={TextTypes.HEADLINEMEDIUM} bold={true}>
+          {/* <Text light={true} type={TextTypes.HEADLINEMEDIUM} bold={true}>
             {service.name}
+          </Text> */}
+          <Text light={true} type={TextTypes.TIRTIARY}>
+            {service.description}
           </Text>
-          <Text type={TextTypes.TIRTIARY}>{service.description}</Text>
         </View>
 
         {service?.amount_restricted && (
-          <Text bold={true}>Selecciona un monto</Text>
+          <Text light={true} bold={true}>
+            Selecciona un monto
+          </Text>
         )}
         {service?.amount_restricted ? (
           service.allowed_amounts?.map(amount => {
