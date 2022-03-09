@@ -64,10 +64,10 @@ export default function DisplayInvoice({navigation, route}) {
   ];
 
   const workerChecker = async () => {
-    // while (!finalityStatusList.includes(currentPaymentStatusV2)) {
-    //   await sleep(1000);
-    //   onGetInvoiceStatus();
-    // }
+    while (!finalityStatusList.includes(currentPaymentStatusV2)) {
+      await sleep(1000);
+      onGetInvoiceStatus();
+    }
   };
 
   const successStyles = {backgroundColor: 'green'};
