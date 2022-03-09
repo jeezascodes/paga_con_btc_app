@@ -30,7 +30,7 @@ export default function DisplayInvoice({navigation, route}) {
   const service = route.params?.service;
   const [isLoading, setIsLoading] = useState(false);
   const [currentPaymentStatus, setCurrentPaymentStatus] = useState(
-    PaymentStates.SERVICE_PAID,
+    PaymentStates.AWAITING_INVOICE_PAYMENT,
   );
 
   let currentPaymentStatusV2 = PaymentStates.AWAITING_INVOICE_PAYMENT;
