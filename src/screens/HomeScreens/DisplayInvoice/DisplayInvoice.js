@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import MainView from '_components/MainView/MainView';
 import {Button, Text, TextInput, Icon} from 'paga-con-btc-ui';
 import {ScrollView, View} from 'react-native';
-// import {} from './DisplayInvoiceStyles';
+import {container, qrContiner, textContainer} from './DisplayInvoiceStyles';
 import {useTheme} from '_utils/styles/themeProvider';
 import {
   TextTypes,
@@ -14,6 +14,7 @@ import {getPaymentStatus} from '../../../data/APIInterface';
 import QRCode from 'react-native-qrcode-svg';
 import {getWidth, windowWidth} from '_utils/helpers/interfaceDimensions';
 import {useUser} from '_store/hooks/useUser';
+import {servicesColor} from '../../../utils/styles/AppColors';
 
 export default function DisplayInvoice({navigation, route}) {
   const invoice = route.params?.invoice;
@@ -54,10 +55,10 @@ export default function DisplayInvoice({navigation, route}) {
   ];
 
   const workerChecker = async () => {
-    while (!finalityStatusList.includes(currentPaymentStatusV2)) {
-      await sleep(1000);
-      onGetInvoiceStatus();
-    }
+    // while (!finalityStatusList.includes(currentPaymentStatusV2)) {
+    //   await sleep(1000);
+    //   onGetInvoiceStatus();
+    // }
   };
 
   const successStyles = {backgroundColor: 'green'};
@@ -80,7 +81,7 @@ export default function DisplayInvoice({navigation, route}) {
             width="60"
             height="60"
           />
-          <Text type={TextTypes.BODY} light={true}>
+          <Text light={true} type={TextTypes.BODY} light={true}>
             Recibimos tu pago
           </Text>
         </View>
@@ -96,7 +97,7 @@ export default function DisplayInvoice({navigation, route}) {
             width="60"
             height="60"
           />
-          <Text type={TextTypes.BODY} light={true}>
+          <Text light={true} type={TextTypes.BODY} light={true}>
             Estamos procesando el pago de tu servicio
           </Text>
         </View>
@@ -110,10 +111,10 @@ export default function DisplayInvoice({navigation, route}) {
             width="60"
             height="60"
           />
-          <Text type={TextTypes.BODY} light={false}>
+          <Text light={true} type={TextTypes.BODY}>
             Servicio pago con éxito
           </Text>
-          <Text type={TextTypes.BODY} light={false}>
+          <Text light={true} type={TextTypes.BODY}>
             {paymentData.payment_folio}
           </Text>
         </View>
@@ -124,29 +125,33 @@ export default function DisplayInvoice({navigation, route}) {
   return (
     <MainView
       testID="screen_feed"
-      customStyles={isSuccess ? successStyles : isFailure ? failureStyles : ''}>
+      customStyles={[
+        isSuccess ? successStyles : isFailure ? failureStyles : '',
+        {backgroundColor: servicesColor[service?.id] || '#1f49a7'},
+      ]}>
       {currentPaymentStatus == PaymentStates.AWAITING_INVOICE_PAYMENT ? (
-        <ScrollView keyboardShouldPersistTaps={true}>
-          <QRCode
-            size={getWidth(windowWidth * 0.9)}
-            value={invoice?.ln_invoice}
-          />
-          <Text type={TextTypes.BODY} light={false}>
-            {invoice.ln_invoice}
-          </Text>
-          <Text type={TextTypes.BODY} light={false}>
-            {invoice.amount_mxn}
-          </Text>
-          <Text type={TextTypes.BODY} light={false}>
-            {invoice.amount_sats}
-          </Text>
-          <Text type={TextTypes.BODY} light={false}>
-            {invoice.exchange_rate}
-          </Text>
-          <Text type={TextTypes.BODY} light={false}>
-            {invoice.expires_at}
-          </Text>
-          <Button title="Continuar" />
+        <ScrollView keyboardShouldPersistTaps={true} style={container}>
+          <View style={qrContiner}>
+            <QRCode
+              size={getWidth(windowWidth * 0.8)}
+              value={invoice?.ln_invoice}
+            />
+          </View>
+          <TextInput label="" value={invoice?.ln_invoice} />
+          <View style={textContainer}>
+            <Text bold={true} light={true} type={TextTypes.BODY}>
+              {invoice?.amount_mxn} MXN
+            </Text>
+            <Text type={TextTypes.TIRTIARY} light={true}>
+              {invoice?.amount_sats} SATS
+            </Text>
+            <Text type={TextTypes.TIRTIARY} light={true}>
+              {invoice?.exchange_rate} SATS/MXN
+            </Text>
+            <Text type={TextTypes.TIRTIARY} light={true}>
+              {invoice?.expires_at}
+            </Text>
+          </View>
         </ScrollView>
       ) : (
         renderInvoiceState()

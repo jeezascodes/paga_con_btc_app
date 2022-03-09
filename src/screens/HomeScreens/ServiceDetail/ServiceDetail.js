@@ -37,9 +37,17 @@ export default function ServiceDetail({navigation, route}) {
     };
     console.log(`data`, data);
     try {
-      const invoice = await createInvoice(data);
+      // const invoice = await createInvoice(data);
       navigation.navigate(RouteNames.DISPLAY_INVOICE, {
-        invoice: invoice.payload,
+        // invoice: invoice.payload,
+        invoice: {
+          ln_invoice:
+            'lnbc20m1pvjluezpp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqhp58yjmdan79s6qqdhdzgynm4zwqd5d7xmw5fk98klysy043l2ahrqsfpp3qjmp7lwpagxun9pygexvgpjdc4jdj85fr9yq20q82gphp2nflc7jtzrcazrra7wwgzxqc8u7754cdlpfrmccae92qgzqvzq2ps8pqqqqqqpqqqqq9qqqvpeuqafqxu92d8lr6fvg0r5gv0heeeqgcrqlnm6jhphu9y00rrhy4grqszsvpcgpy9qqqqqqgqqqqq7qqzqj9n4evl6mr5aj9f58zp6fyjzup6ywn3x6sk8akg5v4tgn2q8g4fhx05wf6juaxu9760yp46454gpg5mtzgerlzezqcqvjnhjh8z3g2qqdhhwkj',
+          amount_mxn: '300',
+          amount_sats: '3000',
+          exchange_rate: '995134.8301',
+          expires_at: '2021-12-19T19:30:40-06:00',
+        },
         service,
       });
     } catch (error) {
