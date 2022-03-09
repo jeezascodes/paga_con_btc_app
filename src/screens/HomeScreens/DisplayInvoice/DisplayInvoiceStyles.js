@@ -19,3 +19,9 @@ export const textContainer = {
   height: getHeight(100),
   justifyContent: 'space-between',
 };
+
+export const invoiceStatusStyle = {
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100%',
+};

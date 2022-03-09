@@ -2,7 +2,12 @@ import React, {useState, useEffect} from 'react';
 import MainView from '_components/MainView/MainView';
 import {Button, Text, TextInput, Icon} from 'paga-con-btc-ui';
 import {ScrollView, View} from 'react-native';
-import {container, qrContiner, textContainer} from './DisplayInvoiceStyles';
+import {
+  container,
+  qrContiner,
+  textContainer,
+  invoiceStatusStyle,
+} from './DisplayInvoiceStyles';
 import {useTheme} from '_utils/styles/themeProvider';
 import {
   TextTypes,
@@ -12,7 +17,11 @@ import {
 } from '_utils/constans/Constants';
 import {getPaymentStatus} from '../../../data/APIInterface';
 import QRCode from 'react-native-qrcode-svg';
-import {getWidth, windowWidth} from '_utils/helpers/interfaceDimensions';
+import {
+  getHeight,
+  getWidth,
+  windowWidth,
+} from '_utils/helpers/interfaceDimensions';
 import {useUser} from '_store/hooks/useUser';
 import {servicesColor} from '../../../utils/styles/AppColors';
 
@@ -21,7 +30,7 @@ export default function DisplayInvoice({navigation, route}) {
   const service = route.params?.service;
   const [isLoading, setIsLoading] = useState(false);
   const [currentPaymentStatus, setCurrentPaymentStatus] = useState(
-    PaymentStates.AWAITING_INVOICE_PAYMENT,
+    PaymentStates.SERVICE_PAID,
   );
 
   let currentPaymentStatusV2 = PaymentStates.AWAITING_INVOICE_PAYMENT;
@@ -74,7 +83,7 @@ export default function DisplayInvoice({navigation, route}) {
   const renderInvoiceState = () => {
     if (currentPaymentStatus == PaymentStates.INVOICE_PAID) {
       return (
-        <View>
+        <View style={invoiceStatusStyle}>
           <Icon
             iconColor={'white'}
             name={IconNames.CHECKBOX}
@@ -90,7 +99,7 @@ export default function DisplayInvoice({navigation, route}) {
       currentPaymentStatus == PaymentStates.SERVICE_PAYMENT_IN_PROCESS
     ) {
       return (
-        <View>
+        <View style={invoiceStatusStyle}>
           <Icon
             iconColor={'white'}
             name={IconNames.CHECKBOX}
@@ -98,13 +107,13 @@ export default function DisplayInvoice({navigation, route}) {
             height="60"
           />
           <Text light={true} type={TextTypes.BODY} light={true}>
-            Estamos procesando el pago de tu servicio
+            Estamos procesando el pago
           </Text>
         </View>
       );
     } else if (currentPaymentStatus == PaymentStates.SERVICE_PAID) {
       return (
-        <View>
+        <View style={invoiceStatusStyle}>
           <Icon
             iconColor={'white'}
             name={IconNames.CHECKBOX}
@@ -114,9 +123,17 @@ export default function DisplayInvoice({navigation, route}) {
           <Text light={true} type={TextTypes.BODY}>
             Servicio pago con éxito
           </Text>
-          <Text light={true} type={TextTypes.BODY}>
-            {paymentData.payment_folio}
-          </Text>
+          <View>
+            <Text
+              style={{textAlign: 'center', marginTop: getHeight(20)}}
+              light={true}
+              type={TextTypes.BODY}>
+              Folio
+            </Text>
+            <Text bold={true} light={true} type={TextTypes.SUBHEADER}>
+              {paymentData?.payment_folio} 12312312
+            </Text>
+          </View>
         </View>
       );
     }
@@ -126,8 +143,8 @@ export default function DisplayInvoice({navigation, route}) {
     <MainView
       testID="screen_feed"
       customStyles={[
-        isSuccess ? successStyles : isFailure ? failureStyles : '',
         {backgroundColor: servicesColor[service?.id] || '#1f49a7'},
+        isSuccess ? successStyles : isFailure ? failureStyles : '',
       ]}>
       {currentPaymentStatus == PaymentStates.AWAITING_INVOICE_PAYMENT ? (
         <ScrollView keyboardShouldPersistTaps={true} style={container}>
